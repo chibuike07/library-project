@@ -62,59 +62,54 @@ header .topArea {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  /* z-index: 5; */
+}
+.clue h4{
+  padding-left: 3%;
+}
+.clue p{
+  padding-left: 3%;
 }
 .mem {
   background: linear-gradient(#7a02ca, #370594);
-  width: 25%;
-  height: 20vh;
+  width: 35%;
+  height: 25vh;
   display: flex;
-  /* justify-content: center; */
-  /* align-items: center; */
   flex-direction: column;
-  margin-right: 2%;
+  margin-right: 4%;
 }
 .reco {
   background-color: #fff;
   color: #494ca2;
-  width: 25%;
-  height: 20vh;
+  width: 35%;
+  height: 25vh;
   display: flex;
-  /* justify-content: center; */
-  /* align-items: center; */
   flex-direction: column;
-  margin-right: 2%;
+  margin-right: 4%;
 }
 .sta {
   background-color: #fff;
   color: #494ca2;
-  width: 25%;
-  height: 20vh;
+  width: 35%;
+  height: 25vh;
   display: flex;
-  /* justify-content: center; */
-  /* align-items: center; */
   flex-direction: column;
-  margin-right: 2%;
+  margin-right: 4%;
 }
 .hel {
   background-color: #fff;
   color: #494ca2;
-  width: 25%;
-  height: 20vh;
+  width: 35%;
+  height: 25vh;
   display: flex;
-  /* justify-content: center; */
-  /* align-items: center; */
   flex-direction: column;
-  margin-right: 2%;
+  margin-right: 4%;
 }
 .log {
   background-color: #fff;
   color: #494ca2;
-  width: 25%;
-  height: 20vh;
+  width: 35%;
+  height: 25vh;
   display: flex;
-  /* justify-content: center; */
-  /* align-items: center; */
   flex-direction: column;
 }
 .top-List {
@@ -127,7 +122,8 @@ header .topArea {
   display: flex;
   flex-direction: column;
   width: 20px;
-  /* color: #fff; */
+  padding-top: 4%;
+  padding-left: 3%;
 }
 .top-List a {
   color: #fff;
