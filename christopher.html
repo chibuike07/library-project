@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>christopher uni.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./lending css/lending css/cristo.css">
+    <script
+  src="https://code.jquery.com/jquery-3.4.0.js"
+  integrity="sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo="
+  crossorigin="anonymous"></script>
+<style>
+</style>
+</head>
+<body>
+    <div class="topA">
+    <img src="./image/unichris logo.png" alt="library image">
+    </div>
+    <div id ="container">
+    <button onmouseout="clearDate()" onmouseover="showDate()" onload="showDate()">view $ hide date </button>
+    <hi id="time"></hi>
+    </div>
+        <div class="headerArea">
+                <h1>christopher university</h1>
+                <p> km.34, Lagos-Ibadan Expressway
+                    P.M.B 3008, RCCG Post Office, Mowe, Ogun State.<br>
+                   </p>   
+                </div>
+<div class="unic">
+<p> <a href="unichris library.html"><h3><capitalize><button> unichris library</button></capitalize></h3></a></p>
+</div>            
+</div>            
+<div class="form">
+    <form role="search" class="search-form" action="javascript:;" onsubmit="loadClasses(this)"> 
+        <label>
+            <span class="screen-reader-text">Search for:</span>
+            <input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" />
+        </label>
+        <div class="btn">
+        <input type="submit" class="search-submit" value="Search" />
+        </div>
+    </form>
+</div>
+<div class="cont">
+<div class="sch-info">
+ <p > Christopher University Offers Admission Into The 
+   Joint University Preliminary Examination Boarrd (JUPEB)
+<br>Foundation Programme.</p>
+</div>
+<div>
+     <p style="padding-left:35px">From <b>JUPEB Foundation</b> Programme to <br/>
+      <b>200 Level</b> Degree Programme.</p>
+      
+    </div>
+<div class="sideArea">
+     <p><b style="color:#ffffff" border="3px solid">2018/2019</b><br>
+       <b style="color:#ff0000">ADMISSION </b><br>
+    <strong style="color:#000"><small> INTO</small></strong> <br>
+    <b style="color:rgb(17, 17, 238)"> JUPEB FOUNDATION </b><br>
+    <strong style="color:#000"> PROGRAMMES</strong></p>
+    <div class="shelve">
+    <img src="./image/shelve image2.jpg" width="400px" height="200px">
+  </div>
+  </div>
+  </div>
+  <div class="left">
+    <p>Interested Candidate must posses minimum <br>
+         of 5 credits relevant to the candidates desires<br>
+         course of study obtained at not more than<br>
+         2 sitting (inclyding English Language) <br>
+    </p>
+       </div>
+       <div  class="up">
+                <p>For further information, visit <a href="www.christopheruniversity.edu.ng/jupeb">www.christopheruniversity.edu.ng/jupeb</a> <br>
+                   <a href="Christopher University">Christopher University</a>  <br>
+                    <a href="@ChristopherUni_">@ChristopherUni_</a> <br>
+                   <a href="jupeb@christopheruniversity.edu.ng">jupeb@christopheruniversity.edu.ng</a> 
+                    </p>
+         </div>
+  
+       <nav>call</nav><img src="../www/library image/sym_action_call.png" >
+    </div>
+       </div>
+    <div  class="down">
+                   0903 775 7032 <br>
+                   0903 775 7033 <br>
+                   0903 775 7037 
+    
+     <div class="joy" text-align="center">
+    <a href="author.html"><button style="text-align: center">Meet the Developer</button> </a>
+</div>
+   
+
+<script  type="text/javascript" src="../www/js/classesCatalog.js"></script>
+
+
+   
+   <Script>
+
+
+
+
+function showDate(){
+var time = document.getElementById("time");
+time.innerHTML = Date();
+};
+
+function clearDate(){
+var time = document.getElementById("time");
+time.innerHTML = '';
+};
+
+    
+function showDate(){
+var time = document.getElementById("time");
+time.innerHTML = Date();
+};
+
+function clearDate(){
+var time = document.getElementById("time");
+time.innerHTML = '';
+};
+
+const loadClasses = (formObj) => {
+console.log("got here")
+const formValue = formObj.elements[0].value;
+let foundCourse = mainClasses[formValue];
+//console.log(foundCourse)
+
+if (typeof foundCourse == 'undefined'){
+    console.log("nothing found")
+}else{
+    //ToDo: pass the foung course to course-dsiplay.html
+
+}
+// data transfer to main class.html
+var str = formValue;
+var result = str.link("subclass.html ")
+var queryString = "?<h3>" + result + "</h3><br>" ;
+window.location.href = "main class.html?" + formValue;
+
+//var queryString = "?<h3>" + result + "</h3><br>" ;
+//window.location.href = "main class.html" + queryString;//var mainclass = foundCourse;
+
+} 
+
+</script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Leading of books</title>
+    <link rel="stylesheet" href="/lending css/lending css/lending.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Charm|Itim|Patrick+Hand+SC|Quintessential&display=swap"
+      rel="stylesheet"
+    />
+    <style></style>
+  </head>
+
+  <body>
+    <!-- <div class="topArea">
+      <img src="/image/unichris logo.png" alt="unichris logo" />
+      <h1 class="sch-name">christopher university</h1>
+    </div> -->
+    <!-- <header>
+      <ul>
+        <li><a href="#">home</a></li>
+        <li id="manual"><a href="#" >manual</a></li>
+        <li id="staff"><a href="#">staff list</a></li>
+        <li><a href="#">demo</a></li>
+      </ul>
+      <p id="demo">day of the week</p>
+      <img src="/image/menu icon.png" alt="menu" id="menu" />
+      <div class="agroup">
+        <ul>
+          <li id="mem">members</li>
+          <li id="disc">Discharging</li>
+          <li>statistics</li>
+          <li>logout</li>
+        </ul>
+      </div>
+    </header> -->
+    <div class="table-container">
+      <div class="manual">
+        <cite id="cite">goin here</cite>
+        </div>
+      <h1> Keep Record Of Your Charging And Discharging Of Collections</h1>
+      <!-- <h3>instruction to filling of collection data</h3>
+      <p style="text-align: center">
+        Fill the following empty boxes except; Total_days, Added_days, and Fine.
+        After filling correctly first hit the check button and then submit your
+        datas -->
+      </p>
+      <!-- <div class="container"> -->
+      <form
+        class="myForm"
+        action="javascript:;"
+        id="f"
+        method="POST" autocomplete="off"
+        onsubmit="event.preventDefault()"
+      >
+        <div class="box-1">
+          <input placeholder="Name" type="text" name="name" id="N" /> <br />
+          <input placeholder="User Number" type="text" name="user_number" id="UN" /> <br />
+          <input placeholder="User Department" type="text" name="user_department" id="UD" /> <br />
+          <input placeholder="Date" type="text" name="date" id="DA" /> <br />
+          <input placeholder="Weed Day" type="text" name="weekday" id="WD" /> <br />
+          <input placeholder="Author" type="text" name="author" id="A" /> <br />
+          <input placeholder="Title" type="text" name="title" id="T" />
+        </div>
+
+        <div class="box-2">
+          <input placeholder="Isbn" type="text" name="isbn" id="I" /> <br />
+          <input placeholder="Accession Number" type="text" name="accession_number" id="AN" /> <br />
+          <input placeholder="Issue Date" type="date" name="issue_date" id="ID" /> <br />
+          <input placeholder="Return Date" type="date" name="return_day" id="RD" /> <br />
+          <input placeholder="Total Days" type="text" name="total_days" id="TD" /> <br />
+          <input placeholder="Added Day" type="number" name="added_days" id="AD" /> <br />          
+          <input placeholder="Fine" type="number" name="fine" id="fine" value="" />
+        </div>
+      </form>
+      <div class="box-3">
+        <button type="submit" onclick="week(this)">
+          Check_data
+        </button>
+        <button onclick="add()">Add_Data</button>
+        <button onclick="save()">save_Data</button>
+        <button onclick="editTable(this)">Edit_Data</button>
+        <button onclick="remove(this)">Remove_Data</button>
+        <!-- <button onclick="load(this)">load_books_Data</button> -->
+
+      </div>
+      <div class="dom-holders">
+        <!-- <p id="number of books">hello</p>
+      <p id="result">result</p>
+      <p id="dem">it me</p> -->
+
+        <input
+          type="text"
+          placeholder="user-information"
+          id="userFil"
+          onkeyup="filter()"
+        />
+      </div>
+    </div>
+    <!-- <div class="clear"></div> -->
+
+    <div class="tbl">
+      <table id="table" border="2">
+        <thead>
+          <th>Name</th>
+          <th>User_number</th>
+          <th>User_department</th>
+          <th>Date</th>
+          <th>Week_day</th>
+          <th>Author</th>
+          <th>Title</th>
+          <th>Isbn</th>
+          <th>Accession_number</th>
+          <th>Issue_date</th>
+          <th>Return_day</th>
+          <th>Total_days</th>
+          <th>Added_days</th>
+          <th>Fine</th>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+    <script src="/js files/lending.js"></script>
+  </body>
+</html>

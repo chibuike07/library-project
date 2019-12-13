@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>mastering localstorage</title>
+  </head>
+  <body>
+    <form action="javascript:;" id="form" onsubmit="save()">
+      <input type="text" name="items" id="items" />
+      <button id="btn">save</button>
+    </form>
+
+    <div></div>
+    <ul></ul>
+
+    <script>
+      let array = [];
+      let ul = document.querySelector("ul");
+      let div = document.querySelector("div");
+      let liMaker = text => {
+        let li = document.createElement("li");
+        li.textContent = text;
+        ul.appendChild(li);
+        div.appendChild(ul);
+      };
+      function save() {
+        let form = document.querySelector("#form");
+        let input = document.querySelector("#items");
+        if (input.value) {
+          alert(input.value);
+          array.push(input.value);
+          if (localStorage.getItem("item list") === null) {
+            localStorage.setItem("item list", JSON.stringify(array));
+          } else {
+            let dataHolder = JSON.parse(localStorage.getItem("item list"));
+            dataHolder = [...array];
+            let hold;
+            for (let a of dataHolder) {
+              hold = "\n " + a;
+              console.log(a);
+            }
+            liMaker(hold)
+            localStorage.setItem("item list", JSON.stringify(dataHolder));
+          }
+        }
+      }
+      document.addEventListener("DOMContentLoaded", load);
+
+      function load() {
+        if (localStorage.getItem("item list")) {
+          array = JSON.parse(localStorage.getItem("item list"));
+        }
+        liMaker(array);
+      }
+    </script>
+  </body>
+</html>

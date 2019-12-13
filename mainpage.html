@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>landing page</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Charm|Itim|Patrick+Hand+SC|Quintessential&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/lending css/lending css/mainpage.css" />
+    <!-- <link rel="stylesheet" href="/lending css/lending css/lending.css" /> -->
+  </head>
+  <body onload="onload()">
+    <div class="topArea">
+      <img src="/image/unichris logo.png" alt="unichris logo" />
+      <div class="tex">
+      <h1 class="sch-name">christopher university</h1>
+      </div>
+    </div>
+    <header>
+      <ul>
+        <li><a href="#">home</a></li>
+        <li id="manual"><a href="#art">manual</a></li>
+        <li id="staff"><a href="#">staff list</a></li>
+        <li><a href="#">demo</a></li>
+      </ul>
+      <p id="demo">day of the week</p>
+      <img src="/image/menu icon.png" alt="menu" id="menu" />
+      <div class="agroup">
+        <ul>
+          <li id="mem">members</li>
+          <li id="disc">Discharging</li>
+          <li>statistics</li>
+          <li>our-library</li>
+          <li>register</li>
+          <li>logout</li>
+        </ul>
+      </div>
+    </header>
+
+    <div class="add-table-data">
+      <a href="lending.html">charge or discharge library collection</a>
+      
+    </div>
+    <div class="land-body">
+      <div class="library-views">
+        <div class="nav-click">
+          <button onclick="prev()"><b><</b></button>
+          <button onclick="libraryView()"><b>></b></button>
+        </div>
+        <img src="#" alt="view" id="library-views" />
+
+        <div class="nav-btn">
+          <div class="text">
+            <h4 id="h4"></h4>
+            <i id="p"></i>
+          </div>
+        </div>
+      </div>
+      <div class="cover">
+      <div class="cat-class">
+        <a href="#" class="cat-class-btn join">join the library</a>
+        <a href="#" class="cat-class-btn ren">renew or reserve books</a>
+        <a href="#" class="cat-class-btn cat">online catalog</a>
+      </div>
+      <article id="art">
+        <h2 >guides to working with table data</h2>
+        <cite>
+          <h2>adding book datas to the table</h2>
+         <p> Fill the following empty boxes except;Return-day, Total_days,
+          Added_days, and Fine. After filling correctly first hit the check
+          button and then submit your datas.the return date is added when the
+          user return the book or books, filter through the table data by the
+          users name to add the return date and after dont forget to check again
+          so as to know if expected duration is met or exceeded, after that you
+          update by hitting save button.
+          </p>
+        </cite>
+        <cite>
+          <h2>edit book data</h2>
+         <p> if you want to edit a book data go down to the table data and click on
+          the particular row you wish to edit , on doing that the row
+          information comes back to the input boxes , make your changes and then
+          click the edit button for the table to receive the update. if you are
+          done making all your edits click on the save button to finally update
+          your changes.
+          </p>
+        </cite>
+        <cite>
+          <h2>remove table datas</h2>
+         <p> if you want to remove any of the table data , click on the particular
+          row you wish to remove, on doing that you will notice that the row
+          information will appear inside the input boxex , just click on the
+          remove button to remove the books information from the table data.</p>
+        </cite>
+      </article>
+      <div class="logue">
+        <h2>access our stock</h2>
+        <a href="#cata">catalogue</a>
+        <a href="#hep">search help</a><br>
+        
+        <h2>archives catalogue</h2>
+        <p class="a2">
+          access the christopher university archives and heritage online catalogue <a href=""> calmview.</a> please note that not all of our catalogues are currently available on calmview. if you cannot find what you are serching for it may be available as a printed catalogue in the wolfson centre.
+        </p>
+        <h2>useful information</h2>
+        <p>
+          for information on <a href=""> temporary library closures</a> please check the city council website <br>
+        </p>
+
+        <h2>using the library services</h2>
+        <a href="#research">study and research</a>
+        <a href="#comp">use a computer</a>
+        <a href="">websites for members</a>
+      </div>
+    </div>
+<div id="cata">
+  <form action="javascript:;" method="GET">
+    <input type="text" name="auth" id="auth" placeholder="Title" list="books">
+    <!-- <input type="text" name="auth" id="auth" placeholder="Author Name"> -->
+    <datalist id="books">
+      <option value="title">
+      <option value="author">
+      <option value="lc">
+    </datalist>
+    <input type="submit">
+  </form>
+<div class="catalo">
+  <div class="tex-tex">
+  <h2 id="hep">searching the library catalogue</h2>
+  <div>
+  <h4>title search</h4>
+  <p>allows you to search for words in the title or series title and also allows you to browse throug titles beginning with certain words. Enter the words you would like to find. section the type of search then click the ok button.</p>
+</div>
+<div>
+  <h4>Author search</h4>
+  <p>
+    Allows you to search for words in an author's name. You can select to search all authors, only individuals, or only organisations. Enter the words you would like to find, select the type of search then click the OK button.
+  </p>
+</div>
+  <div>
+    <h4>Subject search</h4>
+<p>
+Allows you to search for words in a subject heading and also allows you to browse through subjects beginning with some text. Enter the words you would like to find, select the type of search then click the OK button. 
+</p>
+</div>
+</div>
+<div>
+  <img src="" alt="">
+</div>
+</div>
+<div id="research">
+<h2>study and research at the library of christopher university</h2>
+<p>
+  we welcome students and researchers of all ages from complete beginners to experienced academics and whether your research is for  personal, formal learning or work. 
+</p>
+    <p>
+      our knowledgeable and friendly librarians and archivists can help you with everything from investigating your family rree or exploring local history to writing a book or studying for an exam. We are always pleased to suggesst resources to help you and ways to develop your research further.
+    </p>
+    <p>
+      The libratry is a centre of excellence for knowledge and discobery, with a vast collection of reference resources covering every topic under the sun including books, journals, periodicals and other publications. 
+    </p>
+    <p>
+      There are study spaces, wifi and computer available throughout the building, offering you a comfortable environment with everything on hand in which to study or carry out research. 
+    </p>
+</div>
+<div id="comp" class="comp">
+<h2>using library computers</h2>
+<fieldset>
+  <ol>
+    <li><a href="" id="int">internet computers</a></li>
+    <li><a href="" id="pri">printing</a></li>
+    <li><a href="" id="sca">scanning</a></li>
+    <li><a href="" id="res">research computers</a></li>
+    <li><a href="" id="wi-fi">wifi in the library of unichris</a></li>
+  </ol>
+  <img src="#" alt="service images" id="serv" >
+</fieldset>
+<h2>internet computers</h2>
+<p>library members can book computer sessions for up to three hours per session at the libary of birmingham or up to two hours per session at community libraries . During a week, you may book up to nine hours in total. You can book multiple session per day, but must take a break between any two sessions of 30 miinutes aat the library of unichris or 20 minute at community libraries</p>
+<h2>printing</h2>
+<h4>Unchris Library</h4>
+ <p>priting is self-service. You can print at any printer in the  ligrary .Please check the print preview to confirm the pages you want to print. Please make note of your jobcode as you will need this to print your documents.</p>
+ <h2>Community libraries</h2>
+<p>
+If you have documents you want to print when visiting a community library, please ask a member of staff.
+</p>  
+<h2>research computer</h2>
+<p>these are located in unichris library. Access various databases and learning packages, iog in to these package is done the member of staff.</p>
+</div>
+<div>
+  <h2>wifi in unichris library</h2>
+  <p>Free WiFi connectivity is available throughout the Library of Birmingham for use with laptops and portable devices. Access extends onto the terraces and outside spaces.
+  <cite>if you use library of unichris uou are agreeing to the terms and conditions.These are displayed in full at log in.</cite>
+  to access wifi use <b>visitors libray of unchris</b><br>
+  when you first select this option you will be taken to a login screen with a button asking if you want to get online.</p>
+</div>
+    </div>
+    <script src="/js files/mainpage.js"></script>
+  </body>
+</html>

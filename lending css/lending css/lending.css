@@ -1,0 +1,146 @@
+* {
+  margin: o;
+  padding: 0;
+}
+body {
+  /* font-family: "Charm", cursive; */
+  /* font-family: "Itim", cursive; */
+  /* font-family: "Patrick Hand SC", cursive; */
+  /* font-family: "Quintessential", cursive; */
+}
+
+
+.table-container {
+  width: 100%;
+  background-color: (#c6cbef);
+  background: repeating-linear-gradient(
+      rgba(0.003, 0.2, 12, 2),
+      rgba(33, 44, 55, 0.7)
+    ),
+    url("/image/shelve\ image2.jpg");
+  background-size: cover;
+  background-repeat: round;
+  height: 650px;
+  background-color: grey;
+  background-blend-mode: overlay;
+}
+.table-container h1,
+h3
+ {
+  margin-top: 0px;
+  color: #fff;
+  padding: 0.5em;
+  font-family: "Itim", cursive;
+  letter-spacing: 3px;
+  cursor: pointer;
+}
+.table-container .manual {
+  width: 15%;
+  height: 20%;
+  overflow-y: scroll;
+  position: relative;
+  left: 7.3em;
+  display: none;
+}
+.table-container #cite {
+  color: #fff;
+  position: relative;
+}
+.myForm {
+  display: flex;
+  color: #e3e7f1;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-family: "Charm", cursive;
+  font-size: larger;
+  align-self: center;
+  line-height: 2;
+  text-transform: capitalize;
+}
+.myForm .box-1 {
+  margin-right: 1.5em;
+}
+.myForm .box-2 {
+  margin-left: 1.5em;
+}
+.myForm input {
+  height: 20px;
+}
+.myForm input[type="text"],
+.myForm input[type="email"],
+.myForm input[type="password"],
+.myForm input[type="number"],
+.myForm input[type="date"] {
+  font-family: "Charm", cursive;
+  width: 90%;
+  height: 3em;
+  border-radius: 10px;
+  padding-left: 3%;
+  text-transform: capitalize;
+  outline: 0;
+  border: none;
+  border-bottom: 2px solid #494ca2;
+  background-color: transparent;
+  font-size: 20px;
+  color: #fff;
+}
+::placeholder {
+  color: #fff;
+}
+
+.box-3 {
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+  height: 7vh;
+}
+
+.table-container button {
+  background-color: #494ca2;
+  color: #fff;
+  /* #8186d5; */
+  border: 0px;
+  word-spacing: 1.5em;
+  padding: 1em;
+  cursor: pointer;
+}
+.table-container input[id="userFil"] {
+  width: 200px;
+  height: 5%;
+  position: absolute;
+  top: 156vh;
+  left: 1.7%;
+  border-radius: 10px;
+  padding-left: 1.8em;
+  outline: 0;
+  border-style: none;
+  color: #000;
+  font-size: larger;
+  background-color: #c6cbef;
+  opacity: 0.9;
+}
+.tbl {
+  width: 100%;
+  /* background-image: repeating-linear-gradient(
+      to bottom right,
+      rgba(255, 150, 22, 0),
+      rgba(000, 0.23, 0.33, 0.5)
+    ),
+    url("/image/library\ book.jpg"); */
+  background-color: #ccc;
+  background-size: cover;
+  background-repeat: round;
+  height: 300px;
+  overflow-y: scroll;
+  color: #000;
+  background-blend-mode: soft-light;
+  /* background-color: rgb(77, 61, 61); */
+  font-family: "Itim", cursive;
+}
+.tbl table {
+  width: 100%;
+}
+.tbl th {
+  color: black;
+  font-weight: bolder;
+}
