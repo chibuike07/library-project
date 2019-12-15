@@ -1,7 +1,7 @@
 let imageArr = [
-  "/image/network.png",
-  "/image/books.png",
-  "/image/e-learning.png"
+  "/image/network.svg",
+  "/image/books.svg",
+  "/image/cloud.svg"
 ];
 
 let keyArray = [
