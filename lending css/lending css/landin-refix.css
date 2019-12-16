@@ -80,29 +80,19 @@ header .topArea {
 .mem {
   background: linear-gradient(#7a02ca, #370594);
   width: 35%;
-  height: 25vh;
+  height: 30vh;
   display: flex;
   flex-direction: column;
   margin-right: 4%;
   box-shadow: 3px 10px #cabee0;
   outline: none;
 }
-.reco {
-  background-color: #fff;
-  color: #494ca2;
-  width: 35%;
-  height: 25vh;
-  display: flex;
-  flex-direction: column;
-  margin-right: 4%;
-  box-shadow: 3px 10px #cabee0;
-  outline: none;
-}
+
 .sta {
   background-color: #fff;
   color: #494ca2;
   width: 35%;
-  height: 25vh;
+  height: 30vh;
   display: flex;
   flex-direction: column;
   margin-right: 4%;
@@ -113,7 +103,7 @@ header .topArea {
   background-color: #fff;
   color: #494ca2;
   width: 35%;
-  height: 25vh;
+  height: 30vh;
   display: flex;
   flex-direction: column;
   margin-right: 4%;
@@ -124,7 +114,7 @@ header .topArea {
   background-color: #fff;
   color: #494ca2;
   width: 35%;
-  height: 25vh;
+  height: 30vh;
   display: flex;
   flex-direction: column;
   box-shadow: 3px 10px #cabee0;
@@ -333,11 +323,11 @@ fieldset #serv:hover {
 }
 .hap-c {
   width: 40%;
-  height: 25vh;
 }
 .hap {
+  height: 31vh;
   background-color: #fff;
-  margin-top: 10%;
+  margin-top: 14%;
   margin-left: 5%;
   padding-left: 5%;
   box-shadow: 3px 10px #cabee0;
@@ -364,7 +354,7 @@ fieldset #serv:hover {
   background-color: #fff;
   color: #000;
   width: 70%;
-  height: 30vh;
+  height: 40vh;
   position: relative;
   left: 20%;
   top: 5%;
@@ -394,12 +384,12 @@ fieldset #serv:hover {
   display: flex;
   justify-content: center;
   width: 100%;
-  height: 60vh;
   margin-top: 25%;
   position: absolute;
-  top: 440vh;
+  top: 500vh;
 }
 .sigup {
+  height: 60vh;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -423,7 +413,7 @@ fieldset #serv:hover {
 }
 footer {
   width: 100%;
-  height: 90vh;
+  height: 100vh;
   background-color: #493ca2;
 }
 .ff {
@@ -449,6 +439,7 @@ footer {
 }
 .f-phon {
   display: flex;
+  flex-direction: column;
 }
 .f-phon i {
   padding-left: 3%;
@@ -492,6 +483,9 @@ footer {
   line-height: 2;
 }
 .f-easy {
+  color: #fff;
+}
+.emai a {
   color: #fff;
 }
 footer a:hover {

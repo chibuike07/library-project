@@ -1,8 +1,8 @@
-let join = document.getElementById("join");
+let joi = document.getElementById("join");
 let ren = document.getElementById("ren");
 let onl = document.getElementById("onl");
 let navImg = document.getElementById("img");
-join.onmouseover = () => {
+joi.onmouseover = () => {
   navImg.src = imageArr[0];
 };
 ren.onmouseover = () => {
@@ -36,4 +36,14 @@ wi_fi.onmouseover = function() {
 };
 document.addEventListener("DOMContentLoaded", () => {
   servImg.src = keyArray[0];
+});
+
+// let LinkMemb = document.getElementById('memb');
+$("#memb").click(function() {
+  alert("clicked");
+  $(".all-cont").load("mem.html");
+});
+
+$("#ren").click(function() {
+  alert("am ren");
 });

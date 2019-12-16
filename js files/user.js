@@ -85,8 +85,8 @@ function userLogIn(e) {
   let email = document.getElementById("email").value;
   let pass = document.getElementById("pwrd").value;
   let userInfo = JSON.parse(localStorage.getItem("signup"));
-  if(email === ''){
-    alert('email is empty');
+  if (email === "") {
+    alert("email is empty");
     return false;
   }
   let userObjects = userInfo.filter(v => {
@@ -114,7 +114,7 @@ let sig = function() {
 
   console.log(signinForm);
   inputs.style.display = "flex";
-  cont.style.position = 'relative'
+  cont.style.position = "relative";
   cont.style.top = "200px";
   cont.style.left = "10%";
   hide.style.display = "none";
@@ -147,9 +147,9 @@ function loadSignUp() {
   let reg = document.querySelector("#reg");
   reg.style.display = "none";
   inputs.style.display = "flex";
-  cont.style.position = 'relative'
-   cont.style.top = "20px";
-   cont.style.left = "10%";
+  cont.style.position = "relative";
+  cont.style.top = "20px";
+  cont.style.left = "10%";
   btnHide.style.display = "block";
   btnHide.style.position = "absolute";
   btnHide.style.top = "60%";
@@ -160,3 +160,5 @@ function loadSignUp() {
   btnSignin.style.left = "83%";
   // btnSignin.style.alignItem  = 'center';
 }
+
+
