@@ -10,7 +10,7 @@ html {
 .tot-cont {
   background-color: #e3e3e9;
 }
-header {
+/* header {
   width: 100%;
   height: 12vh;
   z-index: 3;
@@ -34,13 +34,13 @@ header .topArea {
 .displayed-list a:hover {
   border-bottom: 2px solid #493ca2;
   padding: 10px;
-}
+} */
 
 .sch {
   display: flex;
   flex-direction: column;
   color: #fff;
-  height: 70vh;
+  height: 80vh;
   background-color: #494ca2;
   width: 100%;
   justify-content: center;
@@ -84,7 +84,7 @@ header .topArea {
   display: flex;
   flex-direction: column;
   margin-right: 4%;
-  box-shadow: 3px 10px #cabee0;
+  filter:drop-shadow(0px 10px #cabee0);
   outline: none;
 }
 
@@ -96,7 +96,7 @@ header .topArea {
   display: flex;
   flex-direction: column;
   margin-right: 4%;
-  box-shadow: 3px 10px #cabee0;
+  filter:drop-shadow(0px 10px #cabee0);
   outline: none;
 }
 .hel {
@@ -107,7 +107,7 @@ header .topArea {
   display: flex;
   flex-direction: column;
   margin-right: 4%;
-  box-shadow: 3px 10px #cabee0;
+  filter:drop-shadow(0px 10px #cabee0);
   outline: none;
 }
 .log {
@@ -117,7 +117,7 @@ header .topArea {
   height: 30vh;
   display: flex;
   flex-direction: column;
-  box-shadow: 3px 10px #cabee0;
+  filter:drop-shadow(0px 10px #cabee0);
   outline: none;
 }
 .top-List {
@@ -396,7 +396,7 @@ fieldset #serv:hover {
   width: 50%;
   background-color: #fff;
   height: 30vh;
-  box-shadow: 3px 10px #cabee0;
+  filter:drop-shadow(3px 10px #cabee0);
   outline: none;
 }
 .sigup b {

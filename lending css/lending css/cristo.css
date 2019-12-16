@@ -42,6 +42,7 @@ body {
   border-bottom: 5px;
   text-decoration: underline;
   text-transform: uppercase;
+  border-bottom: none;
 }
 .headerArea h1::first-letter {
   font-size: 100px;
