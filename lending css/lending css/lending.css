@@ -9,24 +9,21 @@ body {
   /* font-family: "Quintessential", cursive; */
 }
 
-
 .table-container {
   width: 100%;
   background-color: (#c6cbef);
   background: repeating-linear-gradient(
-      rgba(0.003, 0.2, 12, 2),
+      rgba(0.003, 0.2, 12, 0.7),
       rgba(33, 44, 55, 0.7)
     ),
-    url("/image/shelve\ image2.jpg");
-  background-size: cover;
+    url("/image/white4.jpg");
+  background-size: contain;
   background-repeat: round;
   height: 650px;
-  background-color: grey;
-  background-blend-mode: overlay;
+  background-color: #6b58e6;
 }
 .table-container h1,
-h3
- {
+h3 {
   margin-top: 0px;
   color: #fff;
   padding: 0.5em;

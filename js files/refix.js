@@ -47,3 +47,47 @@ $("#memb").click(function() {
 $("#ren").click(function() {
   alert("am ren");
 });
+document.addEventListener("DOMContentLoaded", () => {
+  let interv = setInterval(vistedMem, 5000);
+  let count = 0;
+  function vistedMem() {
+    let countObj = { count: count++ };
+    if (localStorage.getItem("visitedMemCount" === null)) {
+      localStorage.setItem(JSON.stringify("visitedMemCount", countObj));
+    } else {
+      let newCount = JSON.parse(localStorage.getItem("visitedMemCount"));
+      newCount = newCount
+      localStorage.setItem(JSON.stringify("visitedMemCount", newCount));
+    }
+    console.log(count);
+    clearInterval(interv);
+  }
+  $(".sta").click(() => {
+    alert("click");
+    let storageD = JSON.parse(localStorage.getItem("signup"));
+    function memCo() {
+      let memLen = `Total number of members is ${storageD.length}`;
+      console.log(memLen);
+    }
+    memCo();
+    function studCo() {
+      let studLen = storageD.filter(n => n.dsp === "student");
+      console.log("number of student is " + studLen.length);
+    }
+    studCo();
+    let notSchMem = () => {
+      let nSchMem = storageD.filter(
+        n => n.dsp !== "student" && n.dsp !== "staff"
+      );
+      console.log("Number of users are " + nSchMem.length);
+    };
+    notSchMem();
+
+    let cou = () => {
+      let visited = count;
+      console.log("visted patron is " + count);
+    };
+    cou();
+    // clearInterval(interv)
+  });
+});

@@ -64,7 +64,7 @@ header .topArea {
 }
 .clue {
   width: 100%;
-  height: 20vh;
+  height: 20%;
   position: absolute;
   top: 74%;
   display: flex;
@@ -84,7 +84,7 @@ header .topArea {
   display: flex;
   flex-direction: column;
   margin-right: 4%;
-  filter:drop-shadow(0px 10px #cabee0);
+  filter: drop-shadow(0px 10px #cabee0);
   outline: none;
 }
 
@@ -96,18 +96,18 @@ header .topArea {
   display: flex;
   flex-direction: column;
   margin-right: 4%;
-  filter:drop-shadow(0px 10px #cabee0);
+  filter: drop-shadow(0px 10px #cabee0);
   outline: none;
 }
 .hel {
   background-color: #fff;
   color: #494ca2;
   width: 35%;
-  height: 30vh;
+  height:30vh;
   display: flex;
   flex-direction: column;
   margin-right: 4%;
-  filter:drop-shadow(0px 10px #cabee0);
+  filter: drop-shadow(0px 10px #cabee0);
   outline: none;
 }
 .log {
@@ -117,7 +117,7 @@ header .topArea {
   height: 30vh;
   display: flex;
   flex-direction: column;
-  filter:drop-shadow(0px 10px #cabee0);
+  filter: drop-shadow(0px 10px #cabee0);
   outline: none;
 }
 .top-List {
@@ -191,7 +191,8 @@ header .topArea {
   flex-direction: column;
   width: 30%;
   padding: 2%;
-  line-height: 3;
+  line-height: 5;
+  margin-top: 7%;
 }
 .nav-link :hover {
   border-bottom: 2px double #493ca2;
@@ -202,6 +203,7 @@ header .topArea {
   width: 70%;
   display: flex;
   justify-content: flex-end;
+
 }
 .nav-img img {
   width: 50%;
@@ -325,7 +327,7 @@ fieldset #serv:hover {
   width: 40%;
 }
 .hap {
-  height: 31vh;
+  height: 31%;
   background-color: #fff;
   margin-top: 14%;
   margin-left: 5%;
@@ -354,7 +356,7 @@ fieldset #serv:hover {
   background-color: #fff;
   color: #000;
   width: 70%;
-  height: 40vh;
+  height: 40%;
   position: relative;
   left: 20%;
   top: 5%;
@@ -385,8 +387,9 @@ fieldset #serv:hover {
   justify-content: center;
   width: 100%;
   margin-top: 25%;
+  height: 30%;
   position: absolute;
-  top: 500vh;
+  top: 449%;
 }
 .sigup {
   height: 60vh;
@@ -395,8 +398,8 @@ fieldset #serv:hover {
   justify-content: space-around;
   width: 50%;
   background-color: #fff;
-  height: 30vh;
-  filter:drop-shadow(3px 10px #cabee0);
+  height: 100%;
+  filter: drop-shadow(3px 10px #cabee0);
   outline: none;
 }
 .sigup b {

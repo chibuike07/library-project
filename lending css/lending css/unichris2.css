@@ -95,13 +95,14 @@ h4 {
     url("/image/tenor\ \(1\).gif");
   background-size: contain;
   background-repeat: no-repeat;
-  background-blend-mode:hard-light;
+  background-blend-mode: hard-light;
   /* height: 100vh; */
 }
 .gif form {
   width: 30%;
   position: absolute;
-  top: 185vh;
+  top: 175vh;
+  /* transform: translate(-80%,-20%); */
 }
 .gif form input[type="text"] {
   height: 5vh;
@@ -120,7 +121,10 @@ h4 {
   /* height: 10vh; */
   position: absolute;
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
+  align-items: center;
+  line-height: 4;
   top: 210vh;
   width: 30%;
 }
@@ -157,10 +161,10 @@ form .btn input[type="submit"] {
   display: flex;
   justify-content: space-around;
   flex-direction: column;
-  height: 40vh;
+  height: 80vh;
   width: 100%;
 }
-.land-body .library-views img {
+.library-views img {
   width: 100%;
   height: 20em;
   text-align: center;
@@ -243,11 +247,15 @@ form .btn input[type="submit"] {
   text-align: center;
   margin-left: 70px;
 }
+.nav-btn:hover {
+  filter: drop-shadow(0 3px 10px #8170f0);
+}
 
 footer {
   width: 100%;
   height: 100vh;
   background-color: #493ca2;
+  margin-top: 10%;
 }
 .ff {
   display: flex;
@@ -326,14 +334,17 @@ footer a:hover {
   color: #fff;
   border-bottom-width: 2px;
 }
-footer .ryt {
+.ryt {
   display: flex;
   justify-content: center;
   justify-items: center;
   background-color: #493ca2;
-  color: #fff;
-  height: 10vh;
+  height: 15vh;
   width: 100%;
+  margin-top: -15%;
+}
+.ryt h4 {
+  color: #fff;
 }
 
 @media screen and (max-width: 800px) {
