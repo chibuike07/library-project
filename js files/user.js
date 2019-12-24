@@ -11,7 +11,8 @@ function userSignUp() {
     dsp: document.getElementById("dsp").value,
     num: document.getElementById("num").value,
     email: document.getElementById("email").value,
-    pwrd: document.getElementById("pwrd").value
+    pwrd: document.getElementById("pwrd").value,
+    img: []
   };
 
   if (userData.fname === "") {
@@ -92,12 +93,22 @@ function userLogIn(e) {
   let userObjects = userInfo.filter(v => {
     return v.email.includes(email) && v.pwrd.includes(pass);
   });
+  // console.log(userObjects);
   if (userObjects == "" || userObjects == false || userObjects == "") {
     alert("Email or Password incorrect");
     return false;
   } else {
     alert("true");
-    location.replace("landing page.html");
+    let userNames;
+    for (a of userObjects) {
+      if (a) {
+        userNames = `${a.fname} ${a.lname}`;
+      }
+    }
+    // console.log(userNames);
+    location.replace("link.html?userNames=" + userNames);
+    // window.location.replace("link.html?" + location.search);
+    // location.replace("landing page.html");
   }
 }
 
@@ -160,5 +171,3 @@ function loadSignUp() {
   btnSignin.style.left = "83%";
   // btnSignin.style.alignItem  = 'center';
 }
-
-

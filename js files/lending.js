@@ -368,7 +368,6 @@ function discharge() {
   let storageData = JSON.parse(localStorage.getItem("collection"));
   let haveNotReturn = storageData.filter(booksHaveReturned);
   for (datas in haveNotReturn) {
-    
     // console.log(datas)
     returnBooks.push(haveNotReturn[datas]);
   }

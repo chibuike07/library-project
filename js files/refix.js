@@ -48,19 +48,20 @@ $("#ren").click(function() {
   alert("am ren");
 });
 document.addEventListener("DOMContentLoaded", () => {
-  let interv = setInterval(vistedMem, 5000);
+  // let interv = setInterval(vistedMem, 5000);
   let count = 0;
+  let week = new Date();
   function vistedMem() {
-    let countObj = { count: count++ };
-    if (localStorage.getItem("visitedMemCount" === null)) {
-      localStorage.setItem(JSON.stringify("visitedMemCount", countObj));
+    count++;
+    if (localStorage.getItem("visitedMem") === null) {
+      localStorage.setItem("visitedMem", JSON.stringify(count));
     } else {
-      let newCount = JSON.parse(localStorage.getItem("visitedMemCount"));
-      newCount = newCount
-      localStorage.setItem(JSON.stringify("visitedMemCount", newCount));
+      let array = JSON.parse(localStorage.getItem("visitedMem"));
+      array += count;
+      localStorage.setItem("visitedMem", JSON.stringify(array));
+      console.log(day[week.getDay()], array);
     }
-    console.log(count);
-    clearInterval(interv);
+    // clearInterval(interv);
   }
   $(".sta").click(() => {
     alert("click");
@@ -84,10 +85,34 @@ document.addEventListener("DOMContentLoaded", () => {
     notSchMem();
 
     let cou = () => {
-      let visited = count;
-      console.log("visted patron is " + count);
+      let visitedMem = JSON.parse(localStorage.getItem("visitedMem"));
+      let citedMem = `${visitedMem} people visited our page`;
+      console.log(citedMem);
     };
     cou();
-    // clearInterval(interv)
+  });
+  $(".hel").click(() => {
+    alert("click");
+    // let hel = document.querySelector(".hel a");
+    let inp = document.createElement("input");
+    inp.setAttribute("list", "help");
+    let dataList = document.createElement("datalist");
+    dataList.setAttribute("id", "help");
+    option.map(values => {
+      let options = document.createElement("option");
+      options.value = values;
+      dataList.appendChild(options);
+    });
+    console.log(dataList);
+    console.log(inp);
+    let a = document.createElement("a");
   });
 });
+
+let extractedUserObject = decodeURIComponent(window.location.search);
+extractedUserObject = extractedUserObject.substring(1);
+extractedUserObject = extractedUserObject.split(
+"="
+)[1];
+
+console.log(extractedUserObject);

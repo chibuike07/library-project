@@ -7,8 +7,8 @@
     <title>Document</title>
     <style>
       iframe {
-        height: 80vh;
-        width: 100%;
+        height: 100vh;
+        width: 100vw;
       }
       * {
         padding: 0;
@@ -66,14 +66,18 @@
         <div class="logo">
           <img src="/image/unichris logo.png" alt="school logo" />
         </div>
+        <div>
+          <h4 id="day"></h4>
+          <h5 id="time"></h5>
+        </div>
         <div class="displayed-list">
-          <a href="">home</a>
-          <a href="">services</a>
-          <a href="">demo</a>
+          <a href="landing page.html" target="">home</a>
+          <a href="#">services</a>
+          <a href="#">demo</a>
         </div>
       </div>
     </header>
-    <iframe src="landing page.html"></iframe>
+    <iframe src="landing page.html" name="frame"></iframe>
     <footer>
       <div class="fo">
         <h2>Goodbye from unichris library</h2>
@@ -83,7 +87,6 @@
       </div>
     </footer>
     <script>
-        
       function weekDay() {
         let date = new Date();
         let day = new Array(
@@ -96,10 +99,17 @@
           "Saturday"
         );
         // assigning value to date and weekday
-        // document.getElementById("demo").innerHTML =
-          // "Today is " + day[date.getDay()];
+        document.getElementById("day").innerHTML =
+          "Today is " + day[date.getDay()];
       }
       weekDay();
+      function times() {
+        let date = new Date();
+        let hr = date.toLocaleTimeString();
+        console.log(hr);
+        document.getElementById("time").innerText = hr;
+      }
+      times();
     </script>
   </body>
 </html>
