@@ -105,10 +105,9 @@ function userLogIn(e) {
         userNames = `${a.fname} ${a.lname}`;
       }
     }
-    // console.log(userNames);
-    location.replace("link.html?userNames=" + userNames);
-    // window.location.replace("link.html?" + location.search);
-    // location.replace("landing page.html");
+    console.log(userNames);
+    window.location.replace("link.html?userName=" + userNames);
+    //location.href = "link.html?userNames=" + userNames;
   }
 }
 

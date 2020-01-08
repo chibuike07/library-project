@@ -107,12 +107,9 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(inp);
     let a = document.createElement("a");
   });
+  $("#rc").click(function() {
+    alert("yes");
+    $(".all-cont").load("unichris library.html");
+    // location.replace("unichris library.html");
+  });
 });
-
-let extractedUserObject = decodeURIComponent(window.location.search);
-extractedUserObject = extractedUserObject.substring(1);
-extractedUserObject = extractedUserObject.split(
-"="
-)[1];
-
-console.log(extractedUserObject);

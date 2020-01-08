@@ -75,6 +75,7 @@
           <a href="#">services</a>
           <a href="#">demo</a>
         </div>
+        <h4 ><cite id="person-data"></cite></h4>
       </div>
     </header>
     <iframe src="landing page.html" name="frame"></iframe>
@@ -105,11 +106,17 @@
       weekDay();
       function times() {
         let date = new Date();
-        let hr = date.toLocaleTimeString();
-        console.log(hr);
-        document.getElementById("time").innerText = hr;
+        let timeIn12HrsFormat = date.toLocaleTimeString();
+        console.log(timeIn12HrsFormat);
+        document.getElementById("time").innerText = timeIn12HrsFormat;
       }
       times();
+      let personData = document.querySelector("#person-data");
+      let personalDetails = decodeURIComponent(window.location.search); //get sent data
+      personalDetails = personalDetails.substring(1);
+      personalDetails = personalDetails.split("=")[1];
+      personData.innerText = personalDetails;
+      console.log(personalDetails);
     </script>
   </body>
 </html>
