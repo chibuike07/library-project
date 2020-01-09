@@ -5,11 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>unichris library</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
 <link rel="stylesheet" href="/lending css/lending css/unichris2.css">
 </head>
 <body>
 </head>
  <body>
+   <div class="allCont">
         <p style="color:#493ca2">Click on the buttons inside the tabbed menu:</p>
         <div id="Librarian" class="tabcontent">
           <h1>Chief Librarian</h1>
@@ -76,7 +78,7 @@
     <form role="search" class="search-form" action="javascript:;" onsubmit="loadClasses(this)"> 
         <label>
             <span class="screen-reader-text">Search for:</span>
-            <input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" />
+            <input type="search" id="search" class="search-field" placeholder="Search &hellip;" value="" name="s" />
         </label>
         <div class="btn">
         <input type="submit" class="search-submit" value="Search" />
@@ -116,13 +118,12 @@
          </div>
 
 <div class="gif">
-  <form action="javascript:;" method="GET">
+  <form action="javascript:;">
     <input type="text" name="auth" id="auth" placeholder="renew and reserve books..." list="books">
     <!-- <input type="text" name="auth" id="auth" placeholder="Author Name"> -->
     <datalist id="books">
-      <option value="title">
-      <option value="author">
-      <option value="lc">
+      <option value="renew">
+      <option value="reserve">
     </datalist>
     <input type="submit">
   </form>
@@ -272,7 +273,9 @@ Allows you to search for words in a subject heading and also allows you to brows
               <h4>&copy 2019 christopher university</h4>
             </div>
       </footer>
+      </div>
       <script src="/js files/refixObjA.js"></script>
       <script src="/js files/unchrislib.js"></script>
+      <script src="/js files/classesCatalog.js"></script>
     </body>
 </html>

@@ -180,56 +180,13 @@
           <h4>&copy 2019 christopher university</h4>
         </div>
       </footer>
-    
-<script  type="text/javascript" src="../www/js/classesCatalog.js"></script>
+<script src="/js files/cristo.js"></script>
+<script  type="text/javascript" src="/js files/classesCatalog.js"></script>
    <Script>
 
 
 
 
-function showDate(){
-var time = document.getElementById("time");
-time.innerHTML = Date();
-};
-
-function clearDate(){
-var time = document.getElementById("time");
-time.innerHTML = '';
-};
-
-    
-function showDate(){
-var time = document.getElementById("time");
-time.innerHTML = Date();
-};
-
-function clearDate(){
-var time = document.getElementById("time");
-time.innerHTML = '';
-};
-
-const loadClasses = (formObj) => {
-console.log("got here")
-const formValue = formObj.elements[0].value;
-let foundCourse = mainClasses[formValue];
-//console.log(foundCourse)
-
-if (typeof foundCourse == 'undefined'){
-    console.log("nothing found")
-}else{
-    //ToDo: pass the foung course to course-dsiplay.html
-
-}
-// data transfer to main class.html
-var str = formValue;
-var result = str.link("subclass.html ")
-var queryString = "?<h3>" + result + "</h3><br>" ;
-window.location.href = "main class.html?" + formValue;
-
-//var queryString = "?<h3>" + result + "</h3><br>" ;
-//window.location.href = "main class.html" + queryString;//var mainclass = foundCourse;
-
-} 
 
 </script>
 </body>
