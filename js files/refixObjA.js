@@ -32,6 +32,12 @@ let day = [
   "Friday",
   "Saturday"
 ];
-    
-let option = ['use the library services','renew or reserve', 'admission','jupeb program', 'programs offered in christopher uni.', 'contact us']
-
+let intSer = {};
+let option = [
+  "use the library services",
+  "renew or reserve",
+  "admission",
+  "jupeb program",
+  "programs offered in christopher uni.",
+  "contact us"
+];

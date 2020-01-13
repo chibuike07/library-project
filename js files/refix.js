@@ -10,9 +10,9 @@ $("#memb").click(function() {
 });
 
 $("#ren").click(function() {
-  alert("am ren"); 
+  alert("am ren");
   window.location.replace("library.html");
-   console.log();
+  console.log();
 });
 document.addEventListener("DOMContentLoaded", () => {
   // let interv = setInterval(vistedMem, 5000);
@@ -112,6 +112,32 @@ res.onmouseover = function() {
 wi_fi.onmouseover = function() {
   servImg.src = keyArray[4];
 };
+let iterableSet;
+function internetServ() {
+  let set = document.querySelector("#set").getElementsByTagName("li");
+  iterableSet = [...set];
+  for (let list of iterableSet) {
+    list.addEventListener("click", librayServices);
+  }
+}
+internetServ();
+
+function librayServices() {
+  if (this.innerText == int.innerText) {
+    let form = document.createElement("form");
+    let dateInp = document.createElement("input");
+    dateInp.setAttribute("type", "date");
+    let timeInp = document.createElement("input");
+    timeInp.setAttribute("type", "time");
+    form.appendChild(dateInp);
+    form.appendChild(timeInp);
+    let res = dateInp + " " + timeInp;
+    window.location.replace("libserv.html?=form" + res);
+    // document.querySelector(".for").innerHTML = (form);
+    // alert("uyte");
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   servImg.src = keyArray[0];
 });

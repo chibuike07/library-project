@@ -7,7 +7,32 @@
     <title>mastering localstorage</title>
   </head>
   <body>
-    <form action="javascript:;" id="form" onsubmit="save()">
+    <p>
+      <input
+        type="file"
+        accept="image/*"
+        name="image"
+        id="file"
+        onchange="loadFile(event)"
+        style="display: none;"
+      />
+    </p>
+    <p><label for="file" style="cursor: pointer;">Upload Image</label></p>
+    <p id="p"></p>
+    <!-- <p id="p"><img id="output" width="200" /></p> -->
+
+    <script>
+      var loadFile = function(event) {
+        var image = document.createElement("img");
+        image.style.width = "200px";
+        let p = document.getElementById("p");
+        image.src = URL.createObjectURL(event.target.files[0]);
+        p.append(image);
+        console.log(image.src)
+      };
+    </script>
+
+    <!-- <form action="javascript:;" id="form" onsubmit="save()">
       <input type="text" name="items" id="items" />
       <button id="btn">save</button>
     </form>
@@ -54,6 +79,6 @@
         }
         liMaker(array);
       }
-    </script>
+    </script> -->
   </body>
 </html>

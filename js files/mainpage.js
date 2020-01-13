@@ -8,7 +8,7 @@ menuImg.onmouseover = function menu() {
   } else {
     aGroup.style.display = "none";
   }
-}
+};
 let len = 0;
 let array = [
   "/image/e-lib.jpeg",
@@ -104,4 +104,3 @@ function onload() {
   h4.innerText = h4Arr[0];
   p.innerText = pArr[0];
 }
-

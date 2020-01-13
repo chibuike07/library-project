@@ -14,6 +14,32 @@ header {
   height: 20vh;
   background-color: #493ca2;
 }
+.menu {
+  width: 100%;
+}
+.menu-bar {
+  height: 1vh;
+  width: 5%;
+  background-color: #493ca2;
+  margin-top: 0.5%;
+  margin-left: 3%;
+}
+
+.menu ul {
+  display: none;
+  margin-left: 2%;
+  margin-top: 0.3%;
+  width: 13%;
+}
+.menu ul li {
+  width: 100%;
+  color: #fff;
+  background-color: #493ca2;
+  padding-left: 25px;
+}
+.menu ul li:hover {
+  color: #000;
+}
 .title {
   width: 50%;
   display: flex;
@@ -37,8 +63,8 @@ header {
 .userTexHolder::after {
   content: "";
   top: 100%;
-  left: 10px;
-  height: 5%;
+  left: 0px;
+  height: 7%;
   width: 50%;
   background-color: rgba(204, 204, 204, 0.959);
   position: absolute;
