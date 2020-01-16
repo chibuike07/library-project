@@ -139,7 +139,7 @@ let sig = function() {
 
 document.addEventListener("DOMContentLoaded", load);
 function load() {
-  let reg = document.getElementById("reg");
+  // let reg = document.getElementById("reg");
   let inputs = document.querySelector(".signup");
   let btnHide = document.querySelector("#sub");
   let logHide = document.querySelector("#log");

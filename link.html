@@ -76,7 +76,7 @@
           <a href="#">demo</a>
         </div>
         <div>
-          <img src="" alt="">
+          <img src="" alt="" />
           <h4><cite id="person-data"></cite></h4>
         </div>
       </div>
@@ -121,6 +121,7 @@
       personalDetails = personalDetails.split("=")[1];
       personData.innerText = personalDetails;
       console.log(personalDetails);
+      localStorage.setItem("loggerName", JSON.stringify(personalDetails));
     </script>
     <!-- <script src="/js files/refixObjA.js"></script> -->
   </body>

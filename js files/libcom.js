@@ -52,6 +52,7 @@ function menuBar() {
         pLabel.appendChild(label);
         document.querySelector("#ul").appendChild(inp);
       } else if (this.innerText == arr[1]) {
+        let formHolder = document.querySelector(".textA");
         let form = document.createElement("form");
         let textArea = document.createElement("textarea");
         let button = document.createElement("button");
@@ -59,13 +60,12 @@ function menuBar() {
         button.innerText = "submit";
         form.appendChild(textArea);
         form.appendChild(button);
-        form.style.zIndex = '-3'
-        document.querySelector(".userTexHolder").appendChild(form);
-
+        formHolder.appendChild(form);
+        formHolder.classList.add("form-Holder");
         console.log(form);
       }
       let inpId = document.getElementById("file");
-      inpId.onclick = event => {
+      inpId.onchange = event => {
         let image = document.createElement("img");
         image.style.width = "200px";
         let pHolder = document.createElement("p");

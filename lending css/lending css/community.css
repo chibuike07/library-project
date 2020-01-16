@@ -14,6 +14,14 @@ header {
   height: 20vh;
   background-color: #493ca2;
 }
+.tex-A {
+  display: flex;
+  /* justify-content: center; */
+  /* transform: skew(2deg); */
+}
+.tex-A form {
+  text-align: center;
+}
 .menu {
   width: 100%;
 }
