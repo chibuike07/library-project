@@ -10,20 +10,20 @@ function add() {
   const row = table.insertRow(table.length);
   // getting the input_values
   userData = {
-    Name: document.forms.f.name.value,
-    User_number: document.forms.f.user_number.value,
-    User_department: document.forms.f.user_department.value,
-    date: document.forms.f.date.value,
-    Week_day: document.forms.f.weekday.value,
-    Author: document.forms.f.author.value,
-    Title: document.forms.f.title.value,
-    Isbn: document.forms.f.isbn.value,
-    Accession_number: document.forms.f.accession_number.value,
-    Issue_date: document.forms.f.issue_date.value,
-    Return_day: document.forms.f.return_day.value,
-    Total_days: document.forms.f.total_days.value,
-    Added_days: document.forms.f.added_days.value,
-    Fine: document.forms.f.fine.value
+    Name: document.forms.f.name.value.toLowerCase(),
+    User_number: document.forms.f.user_number.value.toLowerCase(),
+    User_department: document.forms.f.user_department.value.toLowerCase(),
+    date: document.forms.f.date.value.toLowerCase(),
+    Week_day: document.forms.f.weekday.value.toLowerCase(),
+    Author: document.forms.f.author.value.toLowerCase(),
+    Title: document.forms.f.title.value.toLowerCase(),
+    Isbn: document.forms.f.isbn.value.toLowerCase(),
+    Accession_number: document.forms.f.accession_number.value.toLowerCase(),
+    Issue_date: document.forms.f.issue_date.value.toLowerCase(),
+    Return_day: document.forms.f.return_day.value.toLowerCase(),
+    Total_days: document.forms.f.total_days.value.toLowerCase(),
+    Added_days: document.forms.f.added_days.value.toLowerCase(),
+    Fine: document.forms.f.fine.value.toLowerCase()
   };
 
   (cell1 = row.insertCell(0)),
@@ -67,7 +67,6 @@ function save() {
   if (check === true) {
     error = false;
     nmrofdata = Object.keys(data).length;
-    nmrofdata = Object.keys(data).length;
     try {
       if (localStorage.getItem("collection") === null) {
         localStorage.setItem("collection", JSON.stringify(data));
@@ -90,7 +89,7 @@ function save() {
   }
   discharge();
   compare();
-location.reload()
+  location.reload();
 }
 
 function load() {
@@ -231,13 +230,20 @@ function week(e) {
   if (days > 1) dayTxt += "s";
 
   if (days >= 0) {
-    document.forms.f.total_days.value = days; //document.getElementById('result').innerHTML;
-    //document.getElementById("result").innerHTML =  days ;
-    //document.getElementById("result").innerHTML =  days + " " + dayTxt;
-    //document.getElementById("result").innerHTML = years + " " + yearTxt + ", " + months + " " + monthTxt + ", " + days + " " + dayTxt;
+    document.forms.f.total_days.value = days;
+    TML =
+      years +
+      " " +
+      yearTxt +
+      ", " +
+      months +
+      " " +
+      monthTxt +
+      ", " +
+      days +
+      " " +
+      dayTxt;
   } else {
-    //document.getElementById("result").innerHTML = years + " " + yearTxt + ", " + months + " " + monthTxt + ", " + days + " " + dayTxt;
-
     document.forms.f.total_days.value = "Equal dates";
   }
 
@@ -282,7 +288,7 @@ let day = new Array(
 // assigning value to date and weekday
 // document.getElementById("demo").innerHTML = "Today is " + day[date.getDay()];
 document.forms.f.date.value =
-monthname[date.getMonth()] + "/" + date.getDate() + "/" + date.getFullYear();
+  monthname[date.getMonth()] + "/" + date.getDate() + "/" + date.getFullYear();
 document.forms.f.weekday.value = day[date.getDay()];
 //initailizing input
 
@@ -386,9 +392,8 @@ function compare() {
   let returnedbooks = JSON.parse(localStorage.getItem("return books"));
   let filteredReturnedBooks = returnedbooks.filter(booksHaveReturned);
   let notInCatalogue = storageData.filter(booksNotReturned);
-  console.log(filteredReturnedBooks)
-  console.log(notInCatalogue)
-  localStorage.setItem('collection', JSON.stringify(notInCatalogue))
-  
+  console.log(filteredReturnedBooks);
+  console.log(notInCatalogue);
+  localStorage.setItem("collection", JSON.stringify(notInCatalogue));
 }
 compare();

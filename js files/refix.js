@@ -11,8 +11,8 @@ $("#memb").click(function() {
 
 $("#ren").click(function() {
   alert("am ren");
-  window.location.replace("library.html");
-  console.log();
+  window.location.replace("library.html?=" + "#auth");
+  // console.log();
 });
 document.addEventListener("DOMContentLoaded", () => {
   // let interv = setInterval(vistedMem, 5000);

@@ -64,10 +64,9 @@ let dateArr = [
   "12"
 ];
 const renewBooks = () => {
-  let inputFornewBook = document.querySelector("#auth");
+  let inputForNewBook = document.querySelector("#auth");
   let collection = JSON.parse(localStorage.getItem("collection"));
   let userLoggedIn = JSON.parse(localStorage.getItem("loggerName"));
-  let userNameMap = collection.filter(n => n.Title).map(n => n.Name);
   console.log(userLoggedIn);
   console.log(collection);
 
@@ -82,48 +81,74 @@ const renewBooks = () => {
     .split(" ")
     .join("-");
   let currentDate = result;
-
-  //userObject
-
   //if renew needs
-  inputFornewBook.onchange = () => {
-    if (inputFornewBook.value == "renew") {
+  inputForNewBook.onchange = () => {
+    if (inputForNewBook.value === "renew") {
       let pro = prompt("please write down the title", "");
       if (pro) {
         let c = confirm("are sure you are ok with the spellings");
+        let userNameMap = collection
+          .filter(n => n.Title === pro)
+          .map(n => n.Name);
         filtObjUserD = collection
           .filter(n => n.Title === pro)
           .map(n => n.Title);
 
         if (c == true) {
-          // console.log(new Date(issuedMap[1]).getDate());
-          if (
-            filtObjUserD[0] === pro &&
-            userNameMap.indexOf(userLoggedIn) !== -1
-          ) {
-            console.log(filtObjUserD);
+          if (filtObjUserD[0] === pro && userNameMap[0] == userLoggedIn) {
             issuedMap = collection
               .filter(n => n.Title == pro)
               .map(n => n.Issue_date);
-
-            let dF = issuedMap.map((n, i) =>
-              console.log(n) && n == currentDate
-                ? new Date(currentDate)
-                : new Date(currentDate).getDate() - new Date(n).getDate()
+            let dF = issuedMap.map(n =>
+              n !== currentDate
+                ? new Date(currentDate).getDate() - new Date(n).getDate()
+                : new Date(currentDate)
             );
             console.log(dF);
-            if (dF > 0) {
+            if (dF - 7 > 0) {
               alert(`${userLoggedIn} you are oweing the library ${dF * 100}`);
-              return false;
             } else {
-              alert(
-                `${userLoggedIn} thanks you are to return the book in a week time ${new Date(
-                  currentDate
-                )}`
-              );
-              return false;
+              let bookDuration = `${userLoggedIn.toUpperCase()} You returned '${filtObjUserD[0].toUpperCase()}' exactly ${dF} days from the ${issuedMap}`;
+              console.log(bookDuration);
+              let ajustUserObject = collection.filter(n => n.Title === pro);
+              for (n of ajustUserObject) {
+                let check = collection.findIndex(r => r == n);
+                n.Issue_date = currentDate;
+                console.log(check);
+                if (collection[check]) {
+                  console.log(collection[check]);
+                  collection.splice(collection[check], 1, collection[check]);
+                  localStorage.setItem(
+                    "collection",
+                    JSON.stringify(collection)
+                  );
+                  console.log(collection);
+                  alert(
+                    `${userLoggedIn.toUpperCase()} Thanks.You have successfully renewed '${filtObjUserD[0].toUpperCase()}'. You are to return '${filtObjUserD[0].toUpperCase()}'. in a week time.`
+                  );
+                }
+                //
+              }
             }
-            // return false;
+          } else {
+            alert(false);
+            return false;
+          }
+        } else if (c == false) {
+          return false;
+        }
+      }
+    } else if (inputForNewBook.value == "reserve") {
+      let pro = prompt("please write down the book name", "");
+      if (pro) {
+        let c = confirm("are sure you are ok with the spellings");
+        if (c == true) {
+          let filtObjUserD = collection.filter(n => n.title).map(n => n.Title);
+          console.log(filtObjUserD);
+          if (titleMap.indexOf(pro) !== -1) {
+            alert("yes");
+            console.log(pro);
+            return false;
           } else {
             alert(false);
             return false;
@@ -135,36 +160,8 @@ const renewBooks = () => {
     }
   };
 };
+
 renewBooks();
-
-const reserveBook = () => {
-  let inputForResBook = document.querySelector("#auth");
-  let collection = JSON.parse(localStorage.getItem("collection"));
-  let userLoggedIn = JSON.parse(localStorage.getItem("loggerName"));
-  console.log(userLoggedIn);
-  console.log(collection);
-
-  if (inputForResBook.value == "reserve") {
-    let pro = prompt("please write down the book name", "");
-    if (pro) {
-      let c = confirm("are sure you are ok with the spellings");
-      if (c == true) {
-        let filtObjUserD = collection.filter(n => n.title).map(n => n.Title);
-        console.log(filtObjUserD);
-        if (titleMap.indexOf(pro) !== -1) {
-          alert("yes");
-          console.log(pro);
-          return false;
-        } else {
-          alert(false);
-          return false;
-        }
-      }
-    } else {
-      return false;
-    }
-  }
-};
 
 // function searchInp() {
 const loadClasses = formObj => {
@@ -176,16 +173,12 @@ const loadClasses = formObj => {
   if (typeof foundCourse == "undefined") {
     console.log("nothing found");
   } else {
-    //ToDo: pass the foung course to course-dsiplay.html
+    // things to do
   }
   // data transfer to main class.html
   var str = formValue;
   var result = str.link("subclass.html ");
-  var queryString = "?<h3>" + result + "</h3><br>";
   window.location.href = "main class.html?" + formValue;
-
-  //var queryString = "?<h3>" + result + "</h3><br>" ;
-  //window.location.href = "main class.html" + queryString;//var mainclass = foundCourse;
 };
 
 // searchInp();
