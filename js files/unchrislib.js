@@ -202,9 +202,9 @@ renewBooks();
 function reserveList() {
   if (this.value === "Books") {
     let inp = document.createElement("input");
-    let aElem = document.createElement("a");
     inp.setAttribute("list", "searchPro");
-    inp.setAttribute("id", "search");
+    window.scrollTo("200", "1150");
+    inp.setAttribute("id", "searchs");
     let datalistForBokks = document.createElement("datalist");
     datalistForBokks.setAttribute("id", "searchPro");
     let pElem = document.querySelector("#colList");
@@ -216,6 +216,7 @@ function reserveList() {
     }
     pElem.appendChild(inp);
     pElem.appendChild(datalistForBokks);
+    document.getElementById("searchs").focus();
   }
 }
 
