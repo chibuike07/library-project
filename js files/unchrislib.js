@@ -1,3 +1,20 @@
+// function searchInp() {
+const loadClasses = formObj => {
+  console.log("got here");
+  const formValue = formObj.elements[0].value;
+  let foundCourse = mainClasses[formValue];
+  //console.log(foundCourse)
+  if (typeof foundCourse == "undefined") {
+    console.log("nothing found");
+  } else {
+    // things to do
+  }
+  // data transfer to main class.html
+  var str = formValue;
+  var result = str.link("subclass.html ");
+  window.location.href = "main class.html?" + formValue;
+};
+
 function openCity(cityName, elmnt, color) {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
@@ -157,21 +174,22 @@ const renewBooks = () => {
           input.setAttribute("list", "reservBokLis");
           input.setAttribute("placeholder", "choose your collections");
           form.autocomplete = false;
+          form.reset();
           let dataList = document.createElement("datalist");
           dataList.setAttribute("id", "reservBokLis");
+          // trying to delete datalist children revisit
           for (let i = 0; i < firstDatalist.length; i++) {
             firstDatalist.remove(firstDatalist[i]);
           }
           console.log(firstDatalist);
-          for (list in collectionArr) {
+          for (list of collectionArr) {
             let option = document.createElement("option");
-            option.innerText = collectionArr[list];
-
-            collectionArr[list].addEventListener("click", reserveList);
+            option.innerText = list;
             dataList.appendChild(option);
           }
           console.log(dataList);
           form.appendChild(dataList);
+          input.addEventListener("change", reserveList);
         }
       }
     } else {
@@ -182,24 +200,25 @@ const renewBooks = () => {
 
 renewBooks();
 function reserveList() {
-  alert(this.innerHTML);
-}
-// function searchInp() {
-const loadClasses = formObj => {
-  console.log("got here");
-  const formValue = formObj.elements[0].value;
-  let foundCourse = mainClasses[formValue];
-  //console.log(foundCourse)
-
-  if (typeof foundCourse == "undefined") {
-    console.log("nothing found");
-  } else {
-    // things to do
+  if (this.value === "Books") {
+    let inp = document.createElement("input");
+    let aElem = document.createElement("a");
+    inp.setAttribute("list", "searchPro");
+    inp.setAttribute("id", "search");
+    let datalistForBokks = document.createElement("datalist");
+    datalistForBokks.setAttribute("id", "searchPro");
+    let pElem = document.querySelector("#colList");
+    let searchByTitleArr = ["title", "author"];
+    for (search of searchByTitleArr) {
+      let option = document.createElement("option");
+      option.innerText = search;
+      datalistForBokks.appendChild(option);
+    }
+    pElem.appendChild(inp);
+    pElem.appendChild(datalistForBokks);
+    pElem.appendChild(aElem);
+    aElem.href = "#search";
   }
-  // data transfer to main class.html
-  var str = formValue;
-  var result = str.link("subclass.html ");
-  window.location.href = "main class.html?" + formValue;
-};
+}
 
 // searchInp();
