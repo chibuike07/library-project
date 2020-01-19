@@ -216,8 +216,6 @@ function reserveList() {
     }
     pElem.appendChild(inp);
     pElem.appendChild(datalistForBokks);
-    pElem.appendChild(aElem);
-    aElem.href = "#search";
   }
 }
 
