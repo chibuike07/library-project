@@ -127,7 +127,6 @@ const renewBooks = () => {
                     `${userLoggedIn.toUpperCase()} Thanks.You have successfully renewed '${filtObjUserD[0].toUpperCase()}'. You are to return '${filtObjUserD[0].toUpperCase()}'. in a week time.`
                   );
                 }
-                //
               }
             }
           } else {
@@ -138,31 +137,53 @@ const renewBooks = () => {
           return false;
         }
       }
+      // firstDatalist.remove(firstDatalist);
     } else if (inputForNewBook.value == "reserve") {
-      let pro = prompt("please write down the book name", "");
-      if (pro) {
-        let c = confirm("are sure you are ok with the spellings");
-        if (c == true) {
-          let filtObjUserD = collection.filter(n => n.title).map(n => n.Title);
-          console.log(filtObjUserD);
-          if (titleMap.indexOf(pro) !== -1) {
-            alert("yes");
-            console.log(pro);
-            return false;
-          } else {
-            alert(false);
-            return false;
+      let form = document.querySelector(".resNwRvs");
+      let firstDatalist = document.querySelector("#books");
+      let input = document.querySelector("#auth");
+      let proForName = prompt("please write your name", "");
+      if (proForName == userLoggedIn) {
+        if (collection.indexOf(proForName) !== -1) {
+          alert(
+            `${userLoggedIn} Please you ar not elible to reserve any library collection`
+          );
+          alert(
+            "This may be because you are have a collection that have not been returned"
+          );
+        } else {
+          let collectionArr = ["Books", "Newspaper", "Journals", "Magazines"];
+          console.log("name not found");
+          input.setAttribute("list", "reservBokLis");
+          input.setAttribute("placeholder", "choose your collections");
+          form.autocomplete = false;
+          let dataList = document.createElement("datalist");
+          dataList.setAttribute("id", "reservBokLis");
+          for (let i = 0; i < firstDatalist.length; i++) {
+            firstDatalist.remove(firstDatalist[i]);
           }
+          console.log(firstDatalist);
+          for (list in collectionArr) {
+            let option = document.createElement("option");
+            option.innerText = collectionArr[list];
+
+            collectionArr[list].addEventListener("click", reserveList);
+            dataList.appendChild(option);
+          }
+          console.log(dataList);
+          form.appendChild(dataList);
         }
-      } else {
-        return false;
       }
+    } else {
+      return false;
     }
   };
 };
 
 renewBooks();
-
+function reserveList() {
+  alert(this.innerHTML);
+}
 // function searchInp() {
 const loadClasses = formObj => {
   console.log("got here");

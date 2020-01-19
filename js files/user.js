@@ -64,7 +64,7 @@ function userSignUp() {
     document.getElementById("pwrd").focus();
     return false;
   }
-  // console.log(userData.num);
+  console.log(userData.num);
   console.log(userData);
   if (localStorage.getItem("signup") === null) {
     array.push(userData);
@@ -138,7 +138,7 @@ let sig = function() {
 };
 
 document.addEventListener("DOMContentLoaded", load);
-let load = () => {
+function load() {
   // let reg = document.getElementById("reg");
   let inputs = document.querySelector(".signup");
   let btnHide = document.querySelector("#sub");
@@ -147,7 +147,7 @@ let load = () => {
   inputs.style.display = "none";
   btnHide.style.display = "none";
   logHide.style.display = "none";
-};
+}
 
 function loadSignUp() {
   let inputs = document.querySelector(".signup");
