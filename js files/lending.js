@@ -102,9 +102,9 @@ function load() {
     // alert(e);
   }
   for (value of data) {
-    tr = table.insertRow();
+    let tr = table.insertRow();
     for (values in value) {
-      td = tr.insertCell();
+      let td = tr.insertCell();
       td.innerHTML = value[values];
       tr.appendChild(td);
       tbody.appendChild(tr);

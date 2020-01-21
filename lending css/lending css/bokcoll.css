@@ -2,13 +2,6 @@
   margin: o;
   padding: 0;
 }
-body {
-  /* font-family: "Charm", cursive; */
-  /* font-family: "Itim", cursive; */
-  /* font-family: "Patrick Hand SC", cursive; */
-  /* font-family: "Quintessential", cursive; */
-}
-
 .table-container {
   width: 100%;
   background-color: (#c6cbef);
@@ -19,11 +12,11 @@ body {
     url("/image/white4.jpg");
   background-size: contain;
   background-repeat: round;
-  height: 650px;
+  height: 40%;
   background-color: #6b58e6;
 }
-.table-container h1,
-h3 {
+
+.table-container h1 {
   margin-top: 0px;
   color: #fff;
   padding: 0.5em;
@@ -31,43 +24,39 @@ h3 {
   letter-spacing: 3px;
   cursor: pointer;
 }
-.table-container .manual {
-  width: 15%;
-  height: 20%;
-  overflow-y: scroll;
-  position: relative;
-  left: 7.3em;
-  display: none;
-}
-.table-container #cite {
-  color: #fff;
-  position: relative;
-}
 .myForm {
   display: flex;
   color: #e3e7f1;
   justify-content: center;
   flex-wrap: wrap;
+  width: 100%;
   font-family: "Charm", cursive;
   font-size: larger;
   align-self: center;
   line-height: 2;
   text-transform: capitalize;
 }
-.myForm .box-1 {
-  margin-right: 1.5em;
+.myForm .input-branch {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
 }
-.myForm .box-2 {
-  margin-left: 1.5em;
+.box-3 {
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+  height: 7vh;
 }
+
 .myForm input {
   height: 20px;
 }
+::placeholder {
+  color: #fff;
+}
+
 .myForm input[type="text"],
-.myForm input[type="email"],
-.myForm input[type="password"],
-.myForm input[type="number"],
-.myForm input[type="date"] {
+.myForm input[type="number"] {
   font-family: "Charm", cursive;
   width: 90%;
   height: 3em;
@@ -81,40 +70,11 @@ h3 {
   font-size: 20px;
   color: #fff;
 }
-::placeholder {
-  color: #fff;
+
+.myForm .box-1 {
+  margin-left: 3.5%;
 }
 
-.box-3 {
-  display: flex;
-  justify-content: center;
-  margin-top: 1em;
-  height: 7vh;
-}
-
-.table-container button {
-  background-color: #494ca2;
-  color: #fff;
-  border: 0px;
-  word-spacing: 1.5em;
-  padding: 1em;
-  cursor: pointer;
-}
-.table-container input[id="userFil"] {
-  width: 200px;
-  height: 5%;
-  position: absolute;
-  top: 156vh;
-  left: 1.7%;
-  border-radius: 10px;
-  padding-left: 1.8em;
-  outline: 0;
-  border-style: none;
-  color: #000;
-  font-size: larger;
-  background-color: #c6cbef;
-  opacity: 0.9;
-}
 .tbl {
   width: 100%;
   background-color: #ccc;
@@ -128,8 +88,22 @@ h3 {
 }
 .tbl table {
   width: 100%;
+  border: 2px solid #000;
+  text-align: center;
 }
 .tbl th {
   color: black;
   font-weight: bolder;
+  border: 2px solid #000;
+}
+table tr td {
+  border: 2px solid #000;
+}
+
+.table-container button {
+  background-color: #494ca2;
+  color: #fff;
+  border: 0px;
+  padding: 1em;
+  cursor: pointer;
 }

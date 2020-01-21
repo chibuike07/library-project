@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Book collections</title>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script> -->
+    <link rel="stylesheet" href="/lending css/lending css/bokcoll.css" />
+  </head>
+  <body>
+    <div class="table-container">
+      <div id="good"></div>
+      <div id="goods"></div>
+      <h1>Nelson Mandela Library: Create a new book record</h1>
+      <form id="Book" action="javascript:;" class="myForm">
+        <div class="input-branch">
+          <div class="box-1">
+            <input
+              type="text"
+              name="Author"
+              id="Author"
+              placeholder="Author name"
+            />
+            <input
+              type="text"
+              name="Title"
+              id="Title"
+              placeholder="Book title"
+            />
+            <input type="text" name="Isbn" id="Isbn" placeholder="Isbn" />
+            <input
+              type="number"
+              name="Year_of_Publication"
+              id="Year_of_Publication"
+              placeholder="Year_of_Publication"
+            />
+          </div>
+          <div class="box-2">
+            <input
+              type="text"
+              name="Place_of_Publication"
+              id="Place_of_Publication "
+              placeholder="Place_of_Publication"
+            />
+            <input
+              type="number"
+              name="Number_of_Title"
+              id="Number_of_Title"
+              placeholder="Number_of_Title"
+            />
+            <input
+              type="text"
+              name="Class_Number"
+              id="Class_Number"
+              placeholder="Class_Number"
+            />
+            <input
+              type="text"
+              name="Edition"
+              id="Edition"
+              placeholder="Edition"
+            />
+          </div>
+        </div>
+      </form>
+      <div class="box-3">
+        <button onclick="addTableRow()">add</button>
+        <button onclick="save()">save</button>
+        <button onclick="editTableRow()">Edit Books</button>
+        <button onclick="removeRowTable()">Remove Books</button>
+        <button id="number of books">check count</button>
+      </div>
+    </div>
+    <!-- </div> -->
+
+    <div class="tbl">
+      <table id="table">
+        <thead>
+          <tr>
+            <th>Author name</th>
+            <th>Title</th>
+            <th>Isbn</th>
+            <th>Year_of_Publication</th>
+            <th>Place_of_Publication</th>
+            <th>Number_of_Title</th>
+            <th>Class_Number</th>
+            <th>Edition</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+    <script type="text/javascript" src="/js files/bookColl.js"></script>
+  </body>
+</html>

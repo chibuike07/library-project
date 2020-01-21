@@ -177,10 +177,6 @@ const renewBooks = () => {
           form.reset();
           let dataList = document.createElement("datalist");
           dataList.setAttribute("id", "reservBokLis");
-          // trying to delete datalist children revisit
-          for (let i = 0; i < firstDatalist.length; i++) {
-            firstDatalist.remove(firstDatalist[i]);
-          }
           console.log(firstDatalist);
           for (list of collectionArr) {
             let option = document.createElement("option");
@@ -199,6 +195,7 @@ const renewBooks = () => {
 };
 
 renewBooks();
+
 function reserveList() {
   if (this.value === "Books") {
     let inp = document.createElement("input");
