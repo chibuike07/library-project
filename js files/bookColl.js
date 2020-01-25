@@ -26,19 +26,9 @@ tim += "Hours:" + hh + "\n";
 tim += " Minutes:" + mn + "\n";
 tim += "seconds:" + sec + "\n";
 alert(tim);
-function addTableRow() {
-  //inserting cell to the table row
-  let newRow = table.insertRow(table.length),
-    cell1 = newRow.insertCell(0),
-    cell2 = newRow.insertCell(1),
-    cell3 = newRow.insertCell(2),
-    cell4 = newRow.insertCell(3),
-    cell5 = newRow.insertCell(4),
-    cell6 = newRow.insertCell(5),
-    cell7 = newRow.insertCell(6),
-    cell8 = newRow.insertCell(7),
-    //geting the input.values
-    Author = document.forms.Book.Author.value,
+const addTableRow = () => {
+  //geting the input.values
+  let Author = document.forms.Book.Author.value,
     Title = document.forms.Book.Title.value,
     Isbn = document.forms.Book.Isbn.value,
     Year_of_Publication = document.forms.Book.Year_of_Publication.value,
@@ -78,10 +68,18 @@ function addTableRow() {
   } else if (Edition == "") {
     alert("please fill in Edition box");
     document.getElementById("Edition").focus();
-  } else {
     return false;
   }
-
+  //inserting cell to the table row
+  let newRow = table.insertRow(table.length),
+    cell1 = newRow.insertCell(0),
+    cell2 = newRow.insertCell(1),
+    cell3 = newRow.insertCell(2),
+    cell4 = newRow.insertCell(3),
+    cell5 = newRow.insertCell(4),
+    cell6 = newRow.insertCell(5),
+    cell7 = newRow.insertCell(6),
+    cell8 = newRow.insertCell(7);
   (cell1.innerHTML = Author),
     (cell2.innerHTML = Title),
     (cell3.innerHTML = Isbn),
@@ -106,13 +104,14 @@ function addTableRow() {
   console.log(input);
   document.querySelector("form").reset();
   selectionRowToInput();
-}
+};
 //adding a click event to the table to look out for rows edit or remove
-function selectionRowToInput() {
+const selectionRowToInput = () => {
   let table = document.getElementById("table");
   for (let i = 0; i < table.rows.length; i++) {
     document.getElementById("number of books").innerHTML =
-      "Number Of Collections is :" + " " + Object.keys(strorageData).length;
+      "Number Of Collections is :" + Object.keys(strorageData).length;
+    +" " + Object.keys(strorageData).length;
     console.log(table.rows.length);
     table.rows[i].onclick = function() {
       rIndex = this.rowIndex;
@@ -127,10 +126,10 @@ function selectionRowToInput() {
       document.forms.Book.Edition.value = this.cells[7].innerHTML;
     };
   }
-}
+};
 selectionRowToInput();
 
-function editTableRow() {
+const editTableRow = () => {
   let Author = document.forms.Book.Author.value,
     Title = document.forms.Book.Title.value,
     Isbn = document.forms.Book.Isbn.value,
@@ -163,31 +162,33 @@ function editTableRow() {
   });
   localStorage.setItem("bookCollection", JSON.stringify(strorageData));
   document.querySelector("form").reset();
-}
+};
 
-function save() {
-  let check = confirm("Are u sure you want to save datas");
-  if (check === true) {
-    if (localStorage.getItem("bookCollection") === null) {
-      arrForBook.push(input);
-      localStorage.setItem("bookCollection", JSON.stringify(arrForBook));
-    } else {
-      let newBooks = JSON.parse(localStorage.getItem("bookCollection"));
-      newBooks.push(input);
-      localStorage.setItem("bookCollection", JSON.stringify(newBooks));
+const save = () => {
+  if (rIndex) {
+    let check = confirm("Are u sure you want to save datas");
+    if (check === true) {
+      if (localStorage.getItem("bookCollection") === null) {
+        arrForBook.push(input);
+        localStorage.setItem("bookCollection", JSON.stringify(arrForBook));
+      } else {
+        let newBooks = JSON.parse(localStorage.getItem("bookCollection"));
+        newBooks.push(input);
+        localStorage.setItem("bookCollection", JSON.stringify(newBooks));
+      }
+      load();
+      selectionRowToInput();
+      // location.reload();
+      document.querySelector("form").reset();
+      return false;
     }
-    load();
-    selectionRowToInput();
-    // location.reload();
-    document.querySelector("form").reset();
-    return false;
   }
-}
+};
+
 function load() {
   if (localStorage.getItem("bookCollection")) {
     data = JSON.parse(localStorage.getItem("bookCollection"));
   }
-
   for (value of data) {
     let tr = table.insertRow();
     for (values in value) {
@@ -200,10 +201,10 @@ function load() {
   console.log(table);
   selectionRowToInput();
 }
-function removeRowTable() {
+const removeRowTable = () => {
   rIndex && table.deleteRow(rIndex);
   let changes = rIndex - 1;
-  rIndex && strorageData.splice(rIndex, 1);
+  rIndex && strorageData.splice(changes, 1);
   localStorage.setItem("bookCollection", JSON.stringify(strorageData));
   location.reload();
-}
+};

@@ -7,7 +7,6 @@ let userData;
 let data = [];
 let returnBooks = [];
 function add() {
-  const row = table.insertRow(table.length);
   // getting the input_values
   userData = {
     Name: document.forms.f.name.value.toLowerCase(),
@@ -25,7 +24,26 @@ function add() {
     Added_days: document.forms.f.added_days.value.toLowerCase(),
     Fine: document.forms.f.fine.value.toLowerCase()
   };
-
+  if (userData.Name == "") {
+    document.getElementById("N").focus();
+    return false;
+  } else if (userData.User_number == "") {
+    document.getElementById("UN").focus();
+    return false;
+  } else if (userData.date == "") {
+    document.getElementById("D").focus();
+    return false;
+  } else if (userData.Author == "") {
+    document.getElementById("A").focus();
+    return false;
+  } else if (userData.Accession_number == "") {
+    document.getElementById("AN").focus();
+    return false;
+  } else if (userData.Issue_date == "") {
+    document.getElementById("ID").focus();
+    return false;
+  }
+  const row = table.insertRow(table.length);
   (cell1 = row.insertCell(0)),
     (cell2 = row.insertCell(1)),
     (cell3 = row.insertCell(2)),

@@ -85,7 +85,7 @@ const renewBooks = () => {
   let collection = JSON.parse(localStorage.getItem("collection"));
   let userLoggedIn = JSON.parse(localStorage.getItem("loggerName"));
   console.log(userLoggedIn);
-  console.log(collection);
+  // console.log(collection);
 
   //declaration && initialize of dates
   let yr = new Date().getFullYear();
@@ -214,6 +214,22 @@ function reserveList() {
     pElem.appendChild(inp);
     pElem.appendChild(datalistForBokks);
     document.getElementById("searchs").focus();
+
+    inp.onchange = () => {
+      if (inp.value === "title") {
+        let proForTitle = prompt("please add the title of the book", "");
+        const handleSignUpData = JSON.parse(localStorage.getItem("signup"));
+        const handleStorageBooksByTitle = JSON.parse(
+          localStorage.getItem("bookCollection")
+        );
+        let founBooksByTitle = handleStorageBooksByTitle.filter(
+          booksByTitle => booksByTitle.Title === proForTitle
+        );
+        let mapedTitledBook = founBooksByTitle.map(title => title.Title);
+        console.log(mapedTitledBook);
+        console.log(founBooksByTitle);
+      }
+    };
   }
 }
 
