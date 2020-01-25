@@ -197,6 +197,15 @@ const renewBooks = () => {
 renewBooks();
 
 function reserveList() {
+  const randomStr =
+    "abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ#%$*?><";
+  const shuffle = randomStr
+    .toString()
+    .split("")
+    .sort(n => 0.5 - Math.random(n))
+    .join("");
+  let reserveBookKey = shuffle.slice(shuffle, 8);
+  // console.log(reserveKey);
   if (this.value === "Books") {
     let inp = document.createElement("input");
     inp.setAttribute("list", "searchPro");
@@ -214,20 +223,47 @@ function reserveList() {
     pElem.appendChild(inp);
     pElem.appendChild(datalistForBokks);
     document.getElementById("searchs").focus();
-
     inp.onchange = () => {
+      const handleSignUpData = JSON.parse(localStorage.getItem("signup"));
       if (inp.value === "title") {
         let proForTitle = prompt("please add the title of the book", "");
-        const handleSignUpData = JSON.parse(localStorage.getItem("signup"));
         const handleStorageBooksByTitle = JSON.parse(
           localStorage.getItem("bookCollection")
         );
+
         let founBooksByTitle = handleStorageBooksByTitle.filter(
           booksByTitle => booksByTitle.Title === proForTitle
         );
+
         let mapedTitledBook = founBooksByTitle.map(title => title.Title);
         console.log(mapedTitledBook);
         console.log(founBooksByTitle);
+        let nameData = handleSignUpData.filter(
+          user =>
+            `${user.fname + " " + user.lname}` ===
+            JSON.parse(localStorage.getItem("loggerName"))
+        );
+
+        for (userObject of nameData) {
+          userSignUpData = handleSignUpData.findIndex(v => v === userObject);
+          console.log(userSignUpData);
+        }
+
+        if (handleSignUpData[userSignUpData]) {
+          handleSignUpData[userSignUpData].id = reserveBookKey;
+          handleSignUpData[userSignUpData].reserveBook.push(`${proForTitle}`);
+          alert(
+            `you have successfully reversed '${proForTitle}' Your reserve key is : ${reserveBookKey}`
+          );
+
+          handleSignUpData.splice(
+            handleSignUpData[userSignUpData],
+            1,
+            handleSignUpData[userSignUpData]
+          );
+          localStorage.setItem("signup", JSON.stringify(handleSignUpData));
+          console.log(handleSignUpData);
+        }
       }
     };
   }

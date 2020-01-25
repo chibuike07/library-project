@@ -12,7 +12,10 @@ function userSignUp() {
     num: document.getElementById("num").value,
     email: document.getElementById("email").value,
     pwrd: document.getElementById("pwrd").value,
-    img: []
+    img: [],
+    borrowedBooks: [],
+    reserveBook: [],
+    id: []
   };
 
   if (userData.fname === "") {
