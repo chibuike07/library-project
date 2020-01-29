@@ -163,14 +163,13 @@ const renewBooks = () => {
       if (proForName == userLoggedIn) {
         if (collection.indexOf(proForName) !== -1) {
           alert(
-            `${userLoggedIn} Please you ar not elible to reserve any library collection`
+            `${userLoggedIn} Please you are not elible to reserve any library collection`
           );
           alert(
-            "This may be because you are have a collection that have not been returned"
+            "This may be because you are having a collection that have not been returned"
           );
         } else {
           let collectionArr = ["Books", "Newspaper", "Journals", "Magazines"];
-          console.log("name not found");
           input.setAttribute("list", "reservBokLis");
           input.setAttribute("placeholder", "choose your collections");
           form.autocomplete = false;
@@ -263,6 +262,68 @@ function reserveList() {
           );
           localStorage.setItem("signup", JSON.stringify(handleSignUpData));
           console.log(handleSignUpData);
+        }
+      } else if (inp.value === "author") {
+        let proForAuthor = prompt("add Author of the book", "");
+        let handleTable = document.createElement("table");
+        let handleThead = document.createElement("thead");
+        let handleTableBody = document.createElement("body");
+        let ArrayForAutAndTit = [];
+        const handleBooksByAuthor = JSON.parse(
+          localStorage.getItem("bookCollection")
+        );
+        let retrieveBooksByAuthor = handleBooksByAuthor.filter(
+          authors => authors.Author === proForAuthor
+        );
+        let rowsForHead = document.createElement("tr");
+        let bookObjKeys, bookObjValues;
+        for (values of retrieveBooksByAuthor) {
+          let obj = {};
+          let Author = values.Author;
+          let Title = values.Title;
+          Object.assign(obj, {
+            Author,
+            Title
+          });
+          ArrayForAutAndTit.push(obj);
+          console.log(ArrayForAutAndTit);
+        }
+        ArrayForAutAndTit.map(v => {
+          bookObjKeys = Object.keys(v);
+        });
+        bookObjKeys.map(v => {
+          let tableHeading = document.createElement("th");
+          tableHeading.innerText = v;
+          rowsForHead.appendChild(tableHeading);
+        });
+        handleThead.appendChild(rowsForHead);
+        // handleTable.appendChild(handleThead);
+        ArrayForAutAndTit.map(v => {
+          let rowsForBody = document.createElement("tr");
+          rowsForBody.setAttribute("display", "flex");
+          rowsForBody.setAttribute("justify-content", "space-between");
+          Object.values(v).map((v, i) => {
+            let td = document.createElement("td");
+            td.innerText = v;
+            rowsForBody.appendChild(td);
+          });
+          // console.log(rowsForBody);
+          handleTable.appendChild(handleThead);
+          handleTableBody.appendChild(rowsForBody);
+        });
+        handleTable.appendChild(handleTableBody);
+        if (handleTable) {
+          $("#table").show();
+          document.getElementById("table").appendChild(handleTable);
+          document.getElementById("table").style.width = "50.7%";
+          $("#btns").val("click.remove table");
+          $("#btns").css("color", "red");
+          $("#btns").click(() => {
+            $("#table").hide();
+            $("#btns").val("submit");
+            $("#btns").css("color", "#fff");
+          });
+          // console.log(handleTable);
         }
       }
     };
