@@ -14,7 +14,7 @@ const loadClasses = formObj => {
   var result = str.link("subclass.html ");
   window.location.href = "main class.html?" + formValue;
 };
-
+//display content of header bar
 function openCity(cityName, elmnt, color) {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
@@ -30,11 +30,12 @@ function openCity(cityName, elmnt, color) {
 }
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
-
+//creating a slide text
 let len = 0;
 let imgId = document.getElementById("library-views");
 let h4 = document.getElementById("h4");
 let p = document.getElementById("p");
+//viewin the next post
 function libraryView() {
   len = len + 1;
   len = len % array.length;
@@ -48,6 +49,7 @@ function libraryView() {
 if (imgId.src == array[2]) {
   alert("am");
 }
+//viewing the previous post
 function prev() {
   if (len === 0) {
     len = array.length;
@@ -60,12 +62,13 @@ function prev() {
     }
   }
 }
-
+//set a default behaviour of the webpage
 document.addEventListener("DOMContentLoaded", () => {
   imgId.src = array[0];
   h4.innerText = h4Arr[0];
   p.innerText = pArr[0];
 });
+//array for date
 let dateArr = [
   "01",
   "02",
@@ -80,6 +83,7 @@ let dateArr = [
   "11",
   "12"
 ];
+//renew of collection
 const renewBooks = () => {
   let inputForNewBook = document.querySelector("#auth");
   let collection = JSON.parse(localStorage.getItem("collection"));
@@ -92,8 +96,8 @@ const renewBooks = () => {
   let date = new Date().getDate();
   let month = dateArr[new Date().getMonth()];
   let dateFormat = `${yr} ${month} ${date}`;
-  let filtObjUserD;
-  let issuedMap;
+  let renewBook;
+  let mapIssuedDate;
   let result = String(dateFormat)
     .split(" ")
     .join("-");
@@ -101,47 +105,76 @@ const renewBooks = () => {
   //if renew needs
   inputForNewBook.onchange = () => {
     if (inputForNewBook.value === "renew") {
-      let pro = prompt("please write down the title", "");
-      if (pro) {
-        let c = confirm("are sure you are ok with the spellings");
-        let userNameMap = collection
-          .filter(n => n.Title === pro)
-          .map(n => n.Name);
-        filtObjUserD = collection
-          .filter(n => n.Title === pro)
-          .map(n => n.Title);
-
-        if (c == true) {
-          if (filtObjUserD[0] === pro && userNameMap[0] == userLoggedIn) {
-            issuedMap = collection
-              .filter(n => n.Title == pro)
-              .map(n => n.Issue_date);
-            let dF = issuedMap.map(n =>
-              n !== currentDate
-                ? new Date(currentDate).getDate() - new Date(n).getDate()
+      //getting the user input for the exact collection to renew
+      let proForRenewBooks = prompt("please write down the title", "");
+      if (proForRenewBooks) {
+        let confirmInputValue = confirm(
+          "are sure you are ok with the spellings"
+        );
+        //checking if the renewer already have the library material
+        let getUserNameMap = collection
+          .filter(renewerObject => renewerObject.Title === proForRenewBooks)
+          .map(renewerName => renewerName.Name);
+        renewBook = collection
+          .filter(renewerObject => renewerObject.Title === proForRenewBooks)
+          .map(bookTitleToRenew => bookTitleToRenew.Title);
+        //things ton happen if the user continues
+        if (confirmInputValue == true) {
+          if (
+            renewBook[0] === proForRenewBooks.trim() &&
+            getUserNameMap[0] === userLoggedIn
+          ) {
+            //get the issued date from data
+            mapIssuedDate = collection
+              .filter(renewerObject => renewerObject.Title == proForRenewBooks)
+              .map(dateString => dateString.Issue_date);
+            //comparing dates to check if the renewer have already exceeded his book return date
+            let dateDifferent = mapIssuedDate.map(dateString =>
+              dateString !== currentDate
+                ? new Date(currentDate).getDate() -
+                  new Date(dateString).getDate()
                 : new Date(currentDate)
             );
-            console.log(dF);
-            if (dF - 7 > 0) {
-              alert(`${userLoggedIn} you are oweing the library ${dF * 100}`);
+            console.log(dateDifferent);
+            //minusing the the actual duration from the date different
+            if (dateDifferent - 7 > 0) {
+              //message if the renewer has exceeded and the amount to be paid to the library
+              alert(
+                `${userLoggedIn} you are oweing the library ${dateDifferent *
+                  100}`
+              );
             } else {
-              let bookDuration = `${userLoggedIn.toUpperCase()} You returned '${filtObjUserD[0].toUpperCase()}' exactly ${dF} days from the ${issuedMap}`;
+              //if the renewer time ius still with in range of expected date
+              let bookDuration = `${userLoggedIn.toUpperCase()} You returned '${renewBook[0].toUpperCase()}' exactly ${dateDifferent} days from the ${mapIssuedDate}`;
               console.log(bookDuration);
-              let ajustUserObject = collection.filter(n => n.Title === pro);
-              for (n of ajustUserObject) {
-                let check = collection.findIndex(r => r == n);
-                n.Issue_date = currentDate;
-                console.log(check);
-                if (collection[check]) {
-                  console.log(collection[check]);
-                  collection.splice(collection[check], 1, collection[check]);
+              //filtering collection that matches the renewer search
+              let ajustUserObject = collection.filter(
+                bookTitle => bookTitle.Title === proForRenewBooks
+              );
+              for (values of ajustUserObject) {
+                //get the index of the the found collection from the collectionData for update.
+                let userIndex = collection.findIndex(
+                  userProperty => userProperty == values
+                );
+                values.Issue_date = currentDate;
+                console.log(userIndex);
+                //geting the collection that have the matches the renewer input
+                if (collection[userIndex]) {
+                  console.log(collection[userIndex]);
+                  //updating the collection data with the current date
+                  collection.splice(
+                    collection[userIndex],
+                    1,
+                    collection[userIndex]
+                  );
+                  // updating the data
                   localStorage.setItem(
                     "collection",
                     JSON.stringify(collection)
                   );
                   console.log(collection);
                   alert(
-                    `${userLoggedIn.toUpperCase()} Thanks.You have successfully renewed '${filtObjUserD[0].toUpperCase()}'. You are to return '${filtObjUserD[0].toUpperCase()}'. in a week time.`
+                    `${userLoggedIn.toUpperCase()} Thanks.You have successfully renewed '${renewBook[0].toUpperCase()}'. You are to return '${renewBook[0].toUpperCase()}'. in a week time.`
                   );
                 }
               }
@@ -150,18 +183,21 @@ const renewBooks = () => {
             alert(false);
             return false;
           }
-        } else if (c == false) {
+        } else if (confirmInputValue == false) {
           return false;
         }
-      }
-      // firstDatalist.remove(firstDatalist);
+      } //reserve purposes
     } else if (inputForNewBook.value == "reserve") {
       let form = document.querySelector(".resNwRvs");
       let firstDatalist = document.querySelector("#books");
       let input = document.querySelector("#auth");
       let proForName = prompt("please write your name", "");
-      if (proForName == userLoggedIn) {
-        if (collection.indexOf(proForName) !== -1) {
+      //running check to see if it matches with the user logged in
+      if (proForName === userLoggedIn) {
+        //checking if the user name already exist in the discharge collection. if yes the person is not eligible
+        let borrowersName = collection.map(v => v["Name"]);
+        console.log(borrowersName);
+        if (borrowersName.includes(proForName)) {
           alert(
             `${userLoggedIn} Please you are not elible to reserve any library collection`
           );
@@ -169,12 +205,15 @@ const renewBooks = () => {
             "This may be because you are having a collection that have not been returned"
           );
         } else {
+          //if the user has not borrowed before now
           let collectionArr = ["Books", "Newspaper", "Journals", "Magazines"];
           input.setAttribute("list", "reservBokLis");
           input.setAttribute("placeholder", "choose your collections");
-          form.autocomplete = false;
-          form.reset();
+          form.autocomplete = false; //remove autocompletion of text
+          form.reset(); //set input to empty string
+          //creating of dropdown list
           let dataList = document.createElement("datalist");
+          //changing the state of the input to hold the new lists
           dataList.setAttribute("id", "reservBokLis");
           console.log(firstDatalist);
           for (list of collectionArr) {
@@ -184,7 +223,7 @@ const renewBooks = () => {
           }
           console.log(dataList);
           form.appendChild(dataList);
-          input.addEventListener("change", reserveList);
+          input.addEventListener("change", reserveList); //adding an event to lookout for onchange values
         }
       }
     } else {
@@ -194,11 +233,24 @@ const renewBooks = () => {
 };
 
 renewBooks();
-
-function reserveList() {
+const generateString = () => {
+  //getting reserve key for clarifcation in the library
   const randomStr =
     "abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ#%$*?><";
-  const shuffle = randomStr
+  shuffle = randomStr
+    .toString()
+    .split("")
+    .sort(n => 0.5 - Math.random(n))
+    .join("");
+  let reserveBookKey = shuffle.slice(shuffle, 8);
+  return reserveBookKey;
+};
+let shuffle;
+function reserveList() {
+  //call back for the input onchange event
+  const randomStr =
+    "abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ#%$*?><";
+  shuffle = randomStr
     .toString()
     .split("")
     .sort(n => 0.5 - Math.random(n))
@@ -206,110 +258,133 @@ function reserveList() {
   let reserveBookKey = shuffle.slice(shuffle, 8);
   // console.log(reserveKey);
   if (this.value === "Books") {
-    let inp = document.createElement("input");
-    inp.setAttribute("list", "searchPro");
-    window.scrollTo("200", "1150");
-    inp.setAttribute("id", "searchs");
-    let datalistForBokks = document.createElement("datalist");
+    //thing to check if input value is books
+    let inputSearchForBooks = document.createElement("input");
+    inputSearchForBooks.setAttribute("list", "searchPro");
+    window.scrollTo("200", "1150"); //setting the scroll to the exact input for search collection
+    inputSearchForBooks.setAttribute("id", "searchs");
+    let datalistForBokks = document.createElement("datalist"); //creating a dropdown list
     datalistForBokks.setAttribute("id", "searchPro");
     let pElem = document.querySelector("#colList");
-    let searchByTitleArr = ["title", "author"];
-    for (search of searchByTitleArr) {
+    let searchByTitleArr = ["title", "author"]; // array for dropdown value
+    for (searchValue of searchByTitleArr) {
       let option = document.createElement("option");
-      option.innerText = search;
+      option.innerText = searchValue;
       datalistForBokks.appendChild(option);
     }
-    pElem.appendChild(inp);
+    pElem.appendChild(inputSearchForBooks);
     pElem.appendChild(datalistForBokks);
     document.getElementById("searchs").focus();
-    inp.onchange = () => {
-      const handleSignUpData = JSON.parse(localStorage.getItem("signup"));
-      if (inp.value === "title") {
+    inputSearchForBooks.onchange = () => {
+      //setting an event listerner on the input onchange
+      let handleSignUpData = JSON.parse(localStorage.getItem("signup"));
+      if (inputSearchForBooks.value === "title") {
+        //things to dcheck if value is title
         let proForTitle = prompt("please add the title of the book", "");
+        //retrieve the bok collections array from the data
         const handleStorageBooksByTitle = JSON.parse(
           localStorage.getItem("bookCollection")
         );
-
+        //getting object of the reserver collection the matches the reserver search
         let founBooksByTitle = handleStorageBooksByTitle.filter(
-          booksByTitle => booksByTitle.Title === proForTitle
+          booksByTitle => booksByTitle.Title
         );
-
+        //getting the exact title from the object
         let mapedTitledBook = founBooksByTitle.map(title => title.Title);
-        console.log(mapedTitledBook);
-        console.log(founBooksByTitle);
-        let nameData = handleSignUpData.filter(
-          user =>
-            `${user.fname + " " + user.lname}` ===
-            JSON.parse(localStorage.getItem("loggerName"))
-        );
-
-        for (userObject of nameData) {
-          userSignUpData = handleSignUpData.findIndex(v => v === userObject);
-          console.log(userSignUpData);
-        }
-
-        if (handleSignUpData[userSignUpData]) {
-          handleSignUpData[userSignUpData].id = reserveBookKey;
-          handleSignUpData[userSignUpData].reserveBook.push(`${proForTitle}`);
-          alert(
-            `you have successfully reversed '${proForTitle}' Your reserve key is : ${reserveBookKey}`
+        // console.log(mapedTitledBook);
+        if (mapedTitledBook.includes(proForTitle)) {
+          console.log(mapedTitledBook);
+          console.log(founBooksByTitle);
+          let nameData = handleSignUpData.filter(
+            user =>
+              `${user.fname + " " + user.lname}` ===
+              JSON.parse(localStorage.getItem("loggerName"))
           );
 
-          handleSignUpData.splice(
-            handleSignUpData[userSignUpData],
-            1,
-            handleSignUpData[userSignUpData]
-          );
-          localStorage.setItem("signup", JSON.stringify(handleSignUpData));
-          console.log(handleSignUpData);
+          for (userObject of nameData) {
+            //find object of the renewer
+            userObjectIndex = handleSignUpData.findIndex(
+              userObjectIndex => userObjectIndex === userObject
+            );
+            console.log(userObjectIndex);
+          }
+
+          if (handleSignUpData[userObjectIndex]) {
+            handleSignUpData[userObjectIndex].id = reserveBookKey; //update the reserver id with the generated key
+            handleSignUpData[userObjectIndex].reserveBook.push(
+              //updating the reserver array for with the collection reserved
+              `${proForTitle}`
+            );
+            alert(
+              `you have successfully reserve '${proForTitle}' Your reserve key is : ${reserveBookKey}`
+            );
+            //splicing the reserve object and replacing with the recent update
+            handleSignUpData.splice(
+              handleSignUpData[userObjectIndex],
+              1,
+              handleSignUpData[userObjectIndex]
+            );
+            localStorage.setItem("signup", JSON.stringify(handleSignUpData)); //updating the data with the recent change
+            console.log(handleSignUpData);
+            return false;
+          } else {
+            return false;
+          }
         }
-      } else if (inp.value === "author") {
-        let proForAuthor = prompt("add Author of the book", "");
+      } else if (inputSearchForBooks.value === "author") {
+        let proForAuthor = prompt("add Author of the book", ""); //input for author name
         let handleTable = document.createElement("table");
+        handleTable.setAttribute("id", "tbl");
         let handleThead = document.createElement("thead");
         let handleTableBody = document.createElement("body");
-        let ArrayForAutAndTit = [];
+        let ArrayForAuthorAndTitle = []; //declaring and array for authors name and title only
         const handleBooksByAuthor = JSON.parse(
+          //get the collection from storage
           localStorage.getItem("bookCollection")
         );
         let retrieveBooksByAuthor = handleBooksByAuthor.filter(
+          //filtering books by the author
           authors => authors.Author === proForAuthor
         );
-        let rowsForHead = document.createElement("tr");
+        let rowsForHead = document.createElement("tr"); //crete rows
         let bookObjKeys, bookObjValues;
         for (values of retrieveBooksByAuthor) {
-          let obj = {};
-          let Author = values.Author;
-          let Title = values.Title;
-          Object.assign(obj, {
+          //getting the values of the array
+          let objectForTitleAndAuthor = {};
+          let Author = values.Author; //got the authors name
+          let Title = values.Title; //got the book title
+          Object.assign(objectForTitleAndAuthor, {
             Author,
             Title
           });
-          ArrayForAutAndTit.push(obj);
-          console.log(ArrayForAutAndTit);
+          ArrayForAuthorAndTitle.push(objectForTitleAndAuthor); //pushing the object into an array
+          console.log(ArrayForAuthorAndTitle);
         }
-        ArrayForAutAndTit.map(v => {
-          bookObjKeys = Object.keys(v);
+        ArrayForAuthorAndTitle.map(key => {
+          bookObjKeys = Object.keys(key); //getting keys of the object
         });
-        bookObjKeys.map(v => {
-          let tableHeading = document.createElement("th");
-          tableHeading.innerText = v;
+        bookObjKeys.map(keys => {
+          let tableHeading = document.createElement("th"); //create tableheading
+          tableHeading.innerText = keys; //assigning keys to table headings
           rowsForHead.appendChild(tableHeading);
         });
         handleThead.appendChild(rowsForHead);
-        // handleTable.appendChild(handleThead);
-        ArrayForAutAndTit.map(v => {
-          let rowsForBody = document.createElement("tr");
-          rowsForBody.setAttribute("display", "flex");
+        handleTable.appendChild(handleThead);
+        ArrayForAuthorAndTitle.map(bookProperties => {
+          let rowsForBody = document.createElement("tr"); //create rows
+          rowsForBody.setAttribute("display", "flex"); //set styles
           rowsForBody.setAttribute("justify-content", "space-between");
-          Object.values(v).map((v, i) => {
-            let td = document.createElement("td");
-            td.innerText = v;
-            rowsForBody.appendChild(td);
-          });
-          // console.log(rowsForBody);
-          handleTable.appendChild(handleThead);
+          let tdForTitle = document.createElement("td"); // table data
+          let tdForAuthor = document.createElement("td"); // table data
+          let a = document.createElement("a"); // create link
+          a.setAttribute("href", "#");
+          a.innerText = bookProperties["Title"]; //assign titles to aElment
+          tdForAuthor.innerText = bookProperties["Author"];
+          tdForTitle.appendChild(a);
+          rowsForBody.appendChild(tdForAuthor);
+          rowsForBody.appendChild(tdForTitle);
           handleTableBody.appendChild(rowsForBody);
+          a.addEventListener("click", subscribeBook); //adding an event for title
         });
         handleTable.appendChild(handleTableBody);
         if (handleTable) {
@@ -325,9 +400,87 @@ function reserveList() {
           });
           // console.log(handleTable);
         }
+        return false;
       }
     };
+  } else if (this.value === "Newspaper") {
+    alert(true);
   }
 }
 
-// searchInp();
+function subscribeBook() {
+  //call back function on the titles
+  const handleSignUpData = JSON.parse(localStorage.getItem("signup"));
+  let nameData = handleSignUpData.filter(
+    user =>
+      `${user.fname + " " + user.lname}` ===
+      JSON.parse(localStorage.getItem("loggerName"))
+  );
+
+  for (userObject of nameData) {
+    userObjectIndex = handleSignUpData.findIndex(
+      userObjectIndex => userObjectIndex === userObject
+    );
+    console.log(userObjectIndex);
+  }
+
+  if (handleSignUpData[userObjectIndex]) {
+    handleSignUpData[userObjectIndex].id = `${generateString()}`;
+    handleSignUpData[userObjectIndex].reserveBook.push(`${this.innerText}`);
+    alert(
+      `you have successfully reserve '${
+        this.innerText
+      }' Your reserve key is : ${generateString()}`
+    );
+    $("#table").hide();
+    $("#btns").val("submit");
+    $("#btns").css("color", "#fff");
+    handleSignUpData.splice(
+      handleSignUpData[userObjectIndex],
+      1,
+      handleSignUpData[userObjectIndex]
+    );
+    localStorage.setItem("signup", JSON.stringify(handleSignUpData));
+    console.log(handleSignUpData);
+    return false;
+  }
+}
+
+const useLibraryServices = () => {
+  let res = $(".lin a").toArray();
+  for (v of res) {
+    v.addEventListener("click", librayServices);
+  }
+};
+useLibraryServices();
+
+let systemAvailable = 3;
+function librayServices() {
+  const handleSignUpData = JSON.parse(localStorage.getItem("signup"));
+  if (this.innerText === "use a computer") {
+    let proForName = prompt("add your full name", "");
+    let form = document.createElement("form");
+    form.style.display = "none";
+    form.setAttribute("type", "time");
+    form.setAttribute("type", "time");
+    let button = document.createElement("button");
+    button.innerText = "submit";
+    let timeInput = document.createElement("input");
+    timeInput.setAttribute("type", "time");
+    let proForTime = prompt("add time");
+    if (proForName) {
+      if (proForName === JSON.parse(localStorage.getItem("loggerName"))) {
+        if (systemAvailable > 0) {
+          systemAvailable = systemAvailable - 1;
+
+          console.log(`${systemAvailable} remaining`);
+          return;
+        } else {
+          alert(
+            `${proForName.toUpperCase()} sorry no system is available for now. thanks`
+          );
+        }
+      }
+    }
+  }
+}
