@@ -457,28 +457,41 @@ useLibraryServices();
 let systemAvailable = 3;
 function librayServices() {
   const handleSignUpData = JSON.parse(localStorage.getItem("signup"));
-  if (this.innerText === "use a computer") {
+  if (this.innerText === "use the library computer") {
+    let arrayForSystemReserver = [];
     let proForName = prompt("add your full name", "");
     let form = document.createElement("form");
     form.style.display = "none";
-    form.setAttribute("type", "time");
-    form.setAttribute("type", "time");
+    form.setAttribute("width", "100vw");
+    form.setAttribute("height", "100vh");
     let button = document.createElement("button");
     button.innerText = "submit";
     let timeInput = document.createElement("input");
     timeInput.setAttribute("type", "time");
-    let proForTime = prompt("add time");
     if (proForName) {
       if (proForName === JSON.parse(localStorage.getItem("loggerName"))) {
-        if (systemAvailable > 0) {
-          systemAvailable = systemAvailable - 1;
-
-          console.log(`${systemAvailable} remaining`);
-          return;
+        form.style.display = "block";
+        form.appendChild(timeInput);
+        form.appendChild(button);
+        $("#table").append(form);
+        if ($("#table")) {
+          form.onsubmit = () => {
+            alert(timeInput.value);
+            let timeValue = timeInput.value;
+            arrayForSystemReserver.push({ proForName, timeValue });
+            console.log(arrayForSystemReserver);
+            if (systemAvailable > 0) {
+              systemAvailable = systemAvailable - 1;
+              console.log(`${systemAvailable} remaining`);
+              return;
+            } else {
+              alert(
+                `${proForName.toUpperCase()} sorry no system is available for now. thanks`
+              );
+            }
+          };
         } else {
-          alert(
-            `${proForName.toUpperCase()} sorry no system is available for now. thanks`
-          );
+          return;
         }
       }
     }
