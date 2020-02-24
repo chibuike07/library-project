@@ -218,7 +218,7 @@ fieldset ol li a {
 fieldset ol li a:hover {
   border-bottom: 2px solid;
   color: #493ca2;
-  padding: 10px;
+  padding-bottom: 10px;
 }
 fieldset #serv {
   position: relative;

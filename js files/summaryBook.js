@@ -19,7 +19,7 @@ function countWord() {
     }
   };
   input.onkeypress = e => {
-    if (holdWodCount.length % 4 == 0) {
+    if (holdWodCount.length % 10 == 0) {
       if (e.keyCode == 32) {
         e.preventDefault();
         input.value += "\n";
@@ -36,23 +36,24 @@ function countWord() {
     // input.value = `${a}\n`
     // input.value.splice()
   };
-
-  if (input.value.trim().split(/\s+/g).length % specifiedCount.innerText == 0) {
-    let c = confirm("continue writing");
-    if (c == true) {
-      input.readOnly = false;
-    } else {
-      input.readOnly = true;
-      input.value == "";
+  input.onkeypress = e => {
+    if (
+      input.value.trim().split(/\s+/g).length % specifiedCount.innerText ==
+      0
+    ) {
+      if (e.keyCode == 32) {
+        e.preventDefault();
+        alert("sorry! you have reached your summary limit");
+        input.readOnly = true;
+      }
     }
-    // input.readOnly = true;
-  }
+  };
 }
 let specifiedCou = document.getElementById("specified");
 document.addEventListener("DOMContentLoaded", function() {
   spanWod.innerText = "word count =>";
   spanLet.innerText = "character count =>";
-  specifiedCou.innerText = 15;
+  specifiedCou.innerText = 5;
 });
 let dropDown = document.querySelector("header .men");
 let list = document.querySelector("header .list");

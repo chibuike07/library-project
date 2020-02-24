@@ -3,7 +3,8 @@
   padding: 0;
 }
 body {
-  background-image: repeating-linear-gradient( to left,
+  background-image: repeating-linear-gradient(
+      to left,
       rgba(255, 255, 255, 0.938),
       rgba(255, 255, 255, 0)
     ),
@@ -12,7 +13,7 @@ body {
   background-repeat: round;
   background-attachment: fixed;
   position: relative;
-  
+
   /* background-color: r; */
   /* background-blend-mode: overlay; */
   /* font-family: "Charm", cursive; */
@@ -23,35 +24,32 @@ body {
   justify-content: space-between;
   height: 10z0vh;
 }
-.signup .get-started{
+.signup .get-started {
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100vh;
   width: 40%;
-  background:linear-gradient(#494ca2,#8185d5);
+  background: linear-gradient(#494ca2, #8185d5);
   color: #fff;
   text-transform: capitalize;
 }
-.signup .get-started .landin-log{
+.signup .get-started .landin-log {
   border-radius: 50%;
   width: 50%;
   height: 30vh;
   margin-top: 10%;
-  
 }
 
 ::placeholder {
   color: #494ca2;
-  
 }
-.cont{
+.cont {
   margin-right: 25%;
   /* background-color: gray; */
   height: 100vh;
   width: 50%;
 }
-
 
 .signup input[type="text"],
 .signup input[type="email"],
@@ -120,7 +118,7 @@ button[name="Login"] {
   display: flex;
   justify-content: center;
   margin-top: 25%;
- }
+}
 .reg {
   width: 30%;
   height: 5.3vh;

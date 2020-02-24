@@ -14,44 +14,93 @@
   </head>
 
   <body>
-    
     <div class="table-container">
       <div class="manual">
         <cite id="cite">goin here</cite>
-        </div>
-      <h1> Keep Record Of Your Charging And Discharging Of Collections</h1>
+      </div>
+      <h1>Keep Record Of Your Charging And Discharging Of Collections</h1>
       <!-- <h3>instruction to filling of collection data</h3>
       <p style="text-align: center">
         Fill the following empty boxes except; Total_days, Added_days, and Fine.
         After filling correctly first hit the check button and then submit your
         datas -->
-      </p>
+      <!-- </p> -->
       <!-- <div class="container"> -->
       <form
         class="myForm"
         action="javascript:;"
         id="f"
-        method="POST" autocomplete="off"
+        method="POST"
+        autocomplete="off"
         onsubmit="event.preventDefault()"
       >
         <div class="box-1">
           <input placeholder="Name" type="text" name="name" id="N" /> <br />
-          <input placeholder="User Number" type="text" name="user_number" id="UN" /> <br />
-          <input placeholder="User Department" type="text" name="user_department" id="UD" /> <br />
+          <input
+            placeholder="User Number"
+            type="text"
+            name="user_number"
+            id="UN"
+          />
+          <br />
+          <input
+            placeholder="User Department"
+            type="text"
+            name="user_department"
+            id="UD"
+          />
+          <br />
           <input placeholder="Date" type="text" name="date" id="DA" /> <br />
-          <input placeholder="Weed Day" type="text" name="weekday" id="WD" /> <br />
+          <input placeholder="Weed Day" type="text" name="weekday" id="WD" />
+          <br />
           <input placeholder="Author" type="text" name="author" id="A" /> <br />
           <input placeholder="Title" type="text" name="title" id="T" />
         </div>
 
         <div class="box-2">
           <input placeholder="Isbn" type="text" name="isbn" id="I" /> <br />
-          <input placeholder="Accession Number" type="text" name="accession_number" id="AN" /> <br />
-          <input placeholder="Issue Date" type="date" name="issue_date" id="ID" /> <br />
-          <input placeholder="Return Date" type="date" name="return_day" id="RD" /> <br />
-          <input placeholder="Total Days" type="text" name="total_days" id="TD" /> <br />
-          <input placeholder="Added Day" type="number" name="added_days" id="AD" /> <br />          
-          <input placeholder="Fine" type="number" name="fine" id="fine" value="" />
+          <input
+            placeholder="Accession Number"
+            type="text"
+            name="accession_number"
+            id="AN"
+          />
+          <br />
+          <input
+            placeholder="Issue Date"
+            type="date"
+            name="issue_date"
+            id="ID"
+          />
+          <br />
+          <input
+            placeholder="Return Date"
+            type="date"
+            name="return_day"
+            id="RD"
+          />
+          <br />
+          <input
+            placeholder="Total Days"
+            type="text"
+            name="total_days"
+            id="TD"
+          />
+          <br />
+          <input
+            placeholder="Added Day"
+            type="number"
+            name="added_days"
+            id="AD"
+          />
+          <br />
+          <input
+            placeholder="Fine"
+            type="number"
+            name="fine"
+            id="fine"
+            value=""
+          />
         </div>
       </form>
       <div class="box-3">
@@ -63,7 +112,6 @@
         <button onclick="editTable(this)">Edit_Data</button>
         <button onclick="remove(this)">Remove_Data</button>
         <!-- <button onclick="load(this)">load_books_Data</button> -->
-
       </div>
       <div class="dom-holders">
         <!-- <p id="number of books">hello</p>

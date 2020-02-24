@@ -118,6 +118,7 @@ function internetServ() {
   iterableSet = [...set];
   for (let list of iterableSet) {
     list.addEventListener("click", librayServices);
+    // console.log(list);
   }
 }
 internetServ();
@@ -131,8 +132,10 @@ function librayServices() {
     timeInp.setAttribute("type", "time");
     form.appendChild(dateInp);
     form.appendChild(timeInp);
-    let res = dateInp + " " + timeInp;
-    window.location.replace("libserv.html?=form" + res);
+    // let res = `${dateInp} ${timeInp}`;
+    // form.appendChild();
+    console.log(form);
+    // window.location.replace(`libserv.html? ${form}`);
     // document.querySelector(".for").innerHTML = (form);
     // alert("uyte");
   }
