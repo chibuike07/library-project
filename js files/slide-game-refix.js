@@ -6,9 +6,9 @@ let pElem = document.querySelector(".display p");
 let iElem = document.querySelector(".display i");
 let heading = document.querySelector(".wel h2");
 let progress = document.querySelector(".progress p");
-let pro,
-  countCo = 0,
-  countFa = 0;
+let proDurationForAns,
+  countCorrectAns = 0,
+  countFailedAns = 0;
 let respond;
 function nex() {
   let display = document.querySelector(".display");
@@ -38,11 +38,11 @@ function prev() {
   }
 }
 function range() {
-  pro = setInterval(time, 100);
+  proDurationForAns = setInterval(time, 100);
   let width = 100;
   function time() {
     if (width <= 1) {
-      clearInterval(pro);
+      clearInterval(proDurationForAns);
     } else {
       width--;
       progress.style.width = width + "%";
@@ -59,24 +59,24 @@ document.addEventListener("DOMContentLoaded", () => {
   iElem.innerText = ans[0];
 });
 function correctAns(event) {
-  countCo++;
+  countCorrectAns++;
   respond = new SpeechSynthesisUtterance("nice shot! u answered correctly!");
   speechSynthesis.speak(respond);
 
-  clearInterval(pro);
-  console.log(countCo);
+  clearInterval(proDurationForAns);
+  console.log(countCorrectAns);
   priceWon();
 }
 function failedAns() {
-  countFa++;
+  countFailedAns++;
   let listEle = document.getElementById("ul").getElementsByTagName("li");
   respond = new SpeechSynthesisUtterance("sorry you missed the answer");
   speechSynthesis.speak(respond);
-  console.log(countFa);
+  console.log(countFailedAns);
   for (let i = 0; i < listEle.length; i++) {
     listEle[i] = listEle[i].classList.remove("listColor");
   }
-  clearInterval(pro);
+  clearInterval(proDurationForAns);
 }
 function prices() {
   let listEle = document.getElementById("ul");
@@ -93,11 +93,11 @@ function priceWon() {
   let listEle = document.getElementById("ul").getElementsByTagName("li");
   let arr = [...listEle];
   for (let i = 0; i < arr.length; ++i) {
-    countCo == i + 1
+    countCorrectAns == i + 1
       ? arr[i].classList.add("list")
       : arr[i].classList.remove("list");
   }
-  if (countCo == 12) {
+  if (countCorrectAns == 12) {
     alert("congrat your team is awesome");
     let ul = document.getElementById("ul");
     priceB.map((n, i) => {
@@ -108,7 +108,7 @@ function priceWon() {
       console.log(c);
     });
   }
-  countCo == 12 && (countCo = 0);
+  countCorrectAns == 12 && (countCorrectAns = 0);
   // n = n + 1;
   // n = n % arr.length;
   // arr[n].classList.add('list')

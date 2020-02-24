@@ -476,12 +476,21 @@ function librayServices() {
         $("#table").append(form);
         if ($("#table")) {
           form.onsubmit = () => {
-            alert(timeInput.value);
             let timeValue = timeInput.value;
-            arrayForSystemReserver.push({ proForName, timeValue });
+            if (timeValue === "" || null) {
+              alert("please add time");
+              timeInput.focus();
+              return;
+            }
+            //things to do here? filter through arrayForSystemReserver and check if the user already had reserved the library computer
+            alert(timeInput.value);
             console.log(arrayForSystemReserver);
             if (systemAvailable > 0) {
               systemAvailable = systemAvailable - 1;
+              arrayForSystemReserver.push({
+                proForName,
+                timeValue
+              });
               console.log(`${systemAvailable} remaining`);
               return;
             } else {
@@ -495,5 +504,7 @@ function librayServices() {
         }
       }
     }
+  } else if (this.innerText === "sumarize a book") {
+    location.href = "summaryBooks.html";
   }
 }

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>summarize your book</title>
+    <link rel="stylesheet" href="./lending css/lending css/sumarizeBook.css" />
+  </head>
+  <body>
+    <div class="all-cont">
+      <header>
+        <div class="men">
+          <div class="menu"></div>
+          <div class="menu"></div>
+          <div class="menu"></div>
+        </div>
+        <br />
+        <div class="list">
+          <li id="lw">limit word</li>
+          <li id="bc">background-color</li>
+          <li id="sf">font size</li>
+          <li id="st">save text</li>
+          <li id="lo">log out</li>
+        </div>
+      </header>
+      <marquee><h2>count your words and characters</h2></marquee>
+      <div class="cont">
+        <textarea
+          id="tex"
+          oninput="countWord()"
+          placeholder="summarize a book..."
+        ></textarea>
+        <div class="txt">
+          <p id="txt"></p>
+        </div>
+      </div>
+      <div class="app">
+        <span id="wods" class="appen"></span><br />
+        <span id="let" class="appen"></span>
+        <span id="specified" class="appen"></span>
+      </div>
+      <footer>
+        <h2>all right reserved copyright &copy hobbyluv concept Nov. 2019</h2>
+      </footer>
+    </div>
+    <script src="./js files/summaryBook.js"></script>
+  </body>
+</html>
