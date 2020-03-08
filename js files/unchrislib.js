@@ -102,6 +102,7 @@ const renewBooks = () => {
     .split(" ")
     .join("-");
   let currentDate = result;
+  console.log(currentDate);
   //if renew needs
   inputForNewBook.onchange = () => {
     if (inputForNewBook.value === "renew") {
@@ -119,10 +120,10 @@ const renewBooks = () => {
           .filter(renewerObject => renewerObject.Title === proForRenewBooks)
           .map(bookTitleToRenew => bookTitleToRenew.Title);
         //things ton happen if the user continues
-        if (confirmInputValue == true) {
+        if (confirmInputValue === true) {
           if (
             renewBook[0] === proForRenewBooks.trim() &&
-            getUserNameMap[0] === userLoggedIn
+            getUserNameMap[0] == userLoggedIn
           ) {
             //get the issued date from data
             mapIssuedDate = collection
@@ -135,6 +136,7 @@ const renewBooks = () => {
                   new Date(dateString).getDate()
                 : new Date(currentDate)
             );
+            console.log(proForRenewBooks);
             console.log(dateDifferent);
             //minusing the the actual duration from the date different
             if (dateDifferent - 7 > 0) {
@@ -187,7 +189,7 @@ const renewBooks = () => {
           return false;
         }
       } //reserve purposes
-    } else if (inputForNewBook.value == "reserve") {
+    } else if (inputForNewBook.value === "reserve") {
       let form = document.querySelector(".resNwRvs");
       let firstDatalist = document.querySelector("#books");
       let input = document.querySelector("#auth");
@@ -376,15 +378,15 @@ function reserveList() {
           rowsForBody.setAttribute("justify-content", "space-between");
           let tdForTitle = document.createElement("td"); // table data
           let tdForAuthor = document.createElement("td"); // table data
-          let a = document.createElement("a"); // create link
-          a.setAttribute("href", "#");
-          a.innerText = bookProperties["Title"]; //assign titles to aElment
+          let aElement = document.createElement("a"); // create link
+          aElement.setAttribute("href", "#");
+          aElement.innerText = bookProperties["Title"]; //assign titles to aElment
           tdForAuthor.innerText = bookProperties["Author"];
-          tdForTitle.appendChild(a);
+          tdForTitle.appendChild(aElement);
           rowsForBody.appendChild(tdForAuthor);
           rowsForBody.appendChild(tdForTitle);
           handleTableBody.appendChild(rowsForBody);
-          a.addEventListener("click", subscribeBook); //adding an event for title
+          aElement.addEventListener("click", subscribeBook); //adding an event for title
         });
         handleTable.appendChild(handleTableBody);
         if (handleTable) {
@@ -416,7 +418,7 @@ function subscribeBook() {
       `${user.fname + " " + user.lname}` ===
       JSON.parse(localStorage.getItem("loggerName"))
   );
-
+  let userObjectIndex;
   for (userObject of nameData) {
     userObjectIndex = handleSignUpData.findIndex(
       userObjectIndex => userObjectIndex === userObject
@@ -447,16 +449,24 @@ function subscribeBook() {
 }
 
 const useLibraryServices = () => {
-  let res = $(".lin a").toArray();
-  for (v of res) {
-    v.addEventListener("click", librayServices);
+  let convertedLibraryServicesToArray = $(".lin a").toArray();
+  for (navLinks of convertedLibraryServicesToArray) {
+    navLinks.addEventListener("click", librayServices);
   }
 };
 useLibraryServices();
 
-let systemAvailable = 3;
+let availableSystem = 10;
+if (localStorage.getItem("numberOfAvailableSystems") === null) {
+  localStorage.setItem(
+    "numberOfAvailableSystems",
+    JSON.stringify(availableSystem)
+  );
+}
+systemAvailable = JSON.parse(localStorage.getItem("numberOfAvailableSystems"));
+console.log(systemAvailable);
 function librayServices() {
-  const handleSignUpData = JSON.parse(localStorage.getItem("signup"));
+  // const handleSignUpData = JSON.parse(localStorage.getItem("signup"));
   if (this.innerText === "use the library computer") {
     let arrayForSystemReserver = [];
     let proForName = prompt("add your full name", "");
@@ -484,14 +494,35 @@ function librayServices() {
             }
             //things to do here? filter through arrayForSystemReserver and check if the user already had reserved the library computer
             alert(timeInput.value);
-            console.log(arrayForSystemReserver);
             if (systemAvailable > 0) {
               systemAvailable = systemAvailable - 1;
-              arrayForSystemReserver.push({
-                proForName,
-                timeValue
-              });
-              console.log(`${systemAvailable} remaining`);
+              if (localStorage.getItem("systemReservers") === null) {
+                arrayForSystemReserver.push({
+                  proForName,
+                  timeValue
+                });
+
+                console.log(reserverData);
+                localStorage.setItem(
+                  "systemReservers",
+                  JSON.stringify(arrayForSystemReserver)
+                );
+              } else {
+                const newReservers = JSON.parse(
+                  localStorage.getItem("systemReservers")
+                );
+                newReservers.push({ proForName, timeValue });
+                localStorage.setItem(
+                  "systemReservers",
+                  JSON.stringify(newReservers)
+                );
+              }
+              console.log(arrayForSystemReserver);
+              localStorage.setItem(
+                "numberOfAvailableSystems",
+                JSON.stringify(`${systemAvailable} remaining`)
+              );
+              // console.log(`${systemAvailable} remaining`);
               return;
             } else {
               alert(
