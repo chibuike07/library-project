@@ -11,11 +11,6 @@ h4 {
   max-height: 200vh;
   width: 100%;
 }
-#sideArea {
-  float: left;
-  width: 100px;
-  height: 250px;
-}
 
 .btns {
   display: flex;
@@ -96,7 +91,7 @@ h4 {
       rgba(165, 23, 221, 0.7),
       rgba(89, 18, 170, 0.7)
     ),
-    url("/image/tenor\ \(1\).gif");
+    url("/image/tenor (1) copy.gif");
   background-size: contain;
   background-repeat: no-repeat;
   background-blend-mode: hard-light;

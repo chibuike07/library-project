@@ -9,7 +9,7 @@ let keyArray = [
 ];
 
 let array = [
-  "/image/e-lib.jpeg",
+  "/image/e-lib.jpg",
   "/image/e-lib4-reduce.jpg",
   "/image/e-lib1.jpeg"
 ];
