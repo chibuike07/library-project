@@ -456,15 +456,7 @@ const useLibraryServices = () => {
 };
 useLibraryServices();
 
-let availableSystem = 10;
-if (localStorage.getItem("numberOfAvailableSystems") === null) {
-  localStorage.setItem(
-    "numberOfAvailableSystems",
-    JSON.stringify(availableSystem)
-  );
-}
-systemAvailable = JSON.parse(localStorage.getItem("numberOfAvailableSystems"));
-console.log(systemAvailable);
+let systemAvailable = 3;
 function librayServices() {
   // const handleSignUpData = JSON.parse(localStorage.getItem("signup"));
   if (this.innerText === "use the library computer") {
@@ -478,7 +470,20 @@ function librayServices() {
     button.innerText = "submit";
     let timeInput = document.createElement("input");
     timeInput.setAttribute("type", "time");
+    // setting system available count to the localstorage
+    if (localStorage.getItem("available_system_count") === null) {
+      localStorage.setItem(
+        "available_system_count",
+        JSON.stringify(systemAvailable)
+      );
+    }
+    // getting count from the localstorage
+    let systemCount = JSON.parse(
+      localStorage.getItem("available_system_count")
+    );
+    // console.log(systemCount);
     if (proForName) {
+      // check if the reserver is the one that logged in
       if (proForName === JSON.parse(localStorage.getItem("loggerName"))) {
         form.style.display = "block";
         form.appendChild(timeInput);
@@ -493,16 +498,33 @@ function librayServices() {
               return;
             }
             //things to do here? filter through arrayForSystemReserver and check if the user already had reserved the library computer
+            //getting the reserver Array from the storage
+            let systemReservers = JSON.parse(
+              localStorage.getItem("systemReservers")
+            );
+            // getting the reservers name
+            let reserverName = systemReservers.map(
+              reservers => reservers.proForName
+            );
+            // check if the reserver had reserved the system
+            if (reserverName.includes(proForName)) {
+              alert(`${proForName} already exist the catalogue`);
+              return;
+            }
             alert(timeInput.value);
-            if (systemAvailable > 0) {
-              systemAvailable = systemAvailable - 1;
+            if (systemCount > 0) {
+              systemCount = systemCount - 1;
+              localStorage.setItem(
+                "available_system_count",
+                JSON.stringify(systemCount)
+              );
               if (localStorage.getItem("systemReservers") === null) {
                 arrayForSystemReserver.push({
                   proForName,
                   timeValue
                 });
 
-                console.log(reserverData);
+                // console.log(reserverData);
                 localStorage.setItem(
                   "systemReservers",
                   JSON.stringify(arrayForSystemReserver)
@@ -517,12 +539,9 @@ function librayServices() {
                   JSON.stringify(newReservers)
                 );
               }
+              console.log(systemCount);
               console.log(arrayForSystemReserver);
-              localStorage.setItem(
-                "numberOfAvailableSystems",
-                JSON.stringify(`${systemAvailable} remaining`)
-              );
-              // console.log(`${systemAvailable} remaining`);
+              console.log(`${systemCount} remaining`);
               return;
             } else {
               alert(
