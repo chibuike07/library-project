@@ -457,9 +457,10 @@ const useLibraryServices = () => {
 useLibraryServices();
 
 let systemAvailable = 3;
-function librayServices() {
+function librayServices(e) {
   // const handleSignUpData = JSON.parse(localStorage.getItem("signup"));
   if (this.innerText === "use the library computer") {
+    e.preventDefault();
     let arrayForSystemReserver = [];
     let proForName = prompt("add your full name", "");
     let form = document.createElement("form");
@@ -485,6 +486,7 @@ function librayServices() {
     if (proForName) {
       // check if the reserver is the one that logged in
       if (proForName === JSON.parse(localStorage.getItem("loggerName"))) {
+        window.scrollTo("1015", "650");
         form.style.display = "block";
         form.appendChild(timeInput);
         form.appendChild(button);
@@ -508,7 +510,7 @@ function librayServices() {
             );
             // check if the reserver had reserved the system
             if (reserverName.includes(proForName)) {
-              alert(`${proForName} already exist the catalogue`);
+              alert(`${proForName} already exist in the catalogue`);
               return;
             }
             alert(timeInput.value);

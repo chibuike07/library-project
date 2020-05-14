@@ -1,4 +1,4 @@
-let joi = document.getElementById("join");
+let joins = document.getElementById("join");
 let ren = document.getElementById("ren");
 let onl = document.getElementById("onl");
 let navImg = document.getElementById("img");
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // location.replace("unichris library.html");
   });
 });
-joi.onmouseover = () => {
+joins.onmouseover = () => {
   navImg.src = imageArr[0];
 };
 ren.onmouseover = () => {

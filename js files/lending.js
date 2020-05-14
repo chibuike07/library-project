@@ -223,7 +223,7 @@ function remove() {
 }
 
 //create a week function
-function week(e) {
+function week() {
   let date1 = new Date(document.getElementById("ID").value);
   let date2 = new Date(document.getElementById("RD").value);
 
