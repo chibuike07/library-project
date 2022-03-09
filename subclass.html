@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>subclass collections</title>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      body {
+        background-color: salmon;
+      }
+    </style>
+    <link rel="stylesheet" href="./lending css/subclass.css" />
+  </head>
+
+  <body>
+    <!-- <nav>
+      <ul>
+        <li>
+          <a href="christopher.html">Home</a>
+        </li>
+        <li>
+          <a href="unichris library.html">Library</a>
+        </li>
+        <li>
+          <a href="main class.html">Collections</a>
+        </li>
+        <li>
+          <a href="developer.html"> Developer</a>
+        </li>
+      </ul>
+    </nav> -->
+    <br /><br />
+    <img
+      name="pic"
+      src="./image/library book.jpg"
+      alt="library images"
+      width="100%"
+      height="300px"
+    />
+
+    <h1>SUBCLASS COLLECTIONS</h1>
+    <br />
+    <p>
+      Christopher university library is a holding of collection of books and non
+      materials . It's for every one , students and staff of unichris and the
+      library is set out to serve the patrons need , so do feel at home and you
+      are free to come to any of the library staff for help in tracing of the
+      reference books that you need.
+    </p>
+    <p>This are list of recent entries of book in unichris library</p>
+    <!-- <script type="text/javascript" src="../www/js/subclass.js"></script> -->
+
+    <div id="missing-mainclass-error"></div>
+    <ol id="our-listItem"></ol>
+
+    <script type="text/javascript" src="./js files/classesCatalog.js"></script>
+    <script>
+      // console.log("hello");
+      let extractedMainClassQueryParameter = decodeURIComponent(
+        window.location.search
+      );
+      extractedMainClassQueryParameter =
+        extractedMainClassQueryParameter.substring(1);
+      extractedMainClassQueryParameter =
+        extractedMainClassQueryParameter.split("=")[1];
+      //var queries = extractedFormValue.split("&");
+      // for (var i = 0; i < queries.length; i++) {
+      //     document.write(queries[i] + "<br>");
+      // }
+
+      //loading the subclasses of the formValue
+      loadSubclassesFor = (mainClassToRender) => {
+        const subclasses = mainClasses[mainClassToRender];
+        console.log(subclasses);
+        //main class not found
+        if (subclasses == null) {
+          renderMainClassNotFound(mainClassToRender);
+        } else {
+          renderSubclasses(subclasses);
+        }
+      };
+      // render subclass of a mainclass and to append in ordered list and with a href
+      renderSubclasses = (subclassesForRendering) => {
+        const orderedSubClassList = document.getElementById("our-listItem");
+        subclassesForRendering.map((subclass) => {
+          const liElement = document.createElement("li");
+          const aElement = document.createElement("a");
+          aElement.setAttribute(
+            "href",
+            "book collections.html?subclasses=" + subclass
+          ); //where the map loops tru for subclasses
+          aElement.innerText = subclass;
+
+          liElement.appendChild(aElement);
+
+          orderedSubClassList.appendChild(liElement);
+        });
+      };
+      //pass function if not found to append the value and a message in a div from the html file
+      renderMainClassNotFound = (expectedMainClass) => {
+        const missingMainClassErrorDiv = document.getElementById(
+          "missing-mainclass-error"
+        );
+        const pElement = document.createElement("p");
+        pElement.innerText =
+          expectedMainClass + " class does not exist anymore!";
+        missingMainClassErrorDiv.appendChild(pElement);
+      };
+
+      loadSubclassesFor(extractedMainClassQueryParameter);
+
+      var pause = 3000;
+      var n = 0;
+      var imgs = [
+        "./image/library book.jpg",
+        "./image/tenor (1) copy.gif",
+        "./image/logo library.jpg",
+      ];
+
+      function rotate() {
+        document.images.pic.src = imgs[n];
+        n === imgs.length - 1 ? (n = 0) : n++;
+        setTimeout("rotate()", pause);
+      }
+      window.onload = rotate;
+    </script>
+  </body>
+</html>

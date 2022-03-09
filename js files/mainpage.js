@@ -13,17 +13,17 @@ let len = 0;
 let array = [
   "/image/e-lib.jpeg",
   "/image/e-lib4-reduce.jpg",
-  "/image/e-lib1.jpeg"
+  "/image/e-lib1.jpeg",
 ];
 h4Arr = [
   "nelson mandela interactive innovation exhibition",
   "place your book order",
-  "unichris library"
+  "unichris library",
 ];
 pArr = [
   "visit hour to christopher university library",
   "feel free to place your orders of collection at your comfort",
-  "come and embrace the knowledge that is what while"
+  "come and embrace the knowledge that is what while",
 ];
 let imgId = document.getElementById("library-views");
 let h4 = document.getElementById("h4");
@@ -39,7 +39,7 @@ function libraryView() {
   }
 }
 if (imgId.src == array[2]) {
-  alert("am");
+  // alert("am");
 }
 function prev() {
   if (len === 0) {
@@ -73,7 +73,7 @@ let keyArray = [
   "/image/printer2.jpeg",
   "/image/scana.jpeg",
   "/image/research2.jpeg",
-  "/image/wi-fi.jpeg"
+  "/image/wi-fi.jpeg",
 ];
 let servImg = document.getElementById("serv");
 // servImg.src = keyArray[len];
@@ -83,19 +83,19 @@ let sca = document.getElementById("sca");
 let res = document.getElementById("res");
 let wi_fi = document.getElementById("wi-fi");
 
-int.onmouseover = function() {
+int.onmouseover = function () {
   servImg.src = keyArray[0];
 };
-pri.onmouseover = function() {
+pri.onmouseover = function () {
   servImg.src = keyArray[1];
 };
-sca.onmouseover = function() {
+sca.onmouseover = function () {
   servImg.src = keyArray[2];
 };
-res.onmouseover = function() {
+res.onmouseover = function () {
   servImg.src = keyArray[3];
 };
-wi_fi.onmouseover = function() {
+wi_fi.onmouseover = function () {
   servImg.src = keyArray[4];
 };
 function onload() {

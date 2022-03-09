@@ -1,5 +1,5 @@
 // function searchInp() {
-const loadClasses = formObj => {
+const loadClasses = (formObj) => {
   console.log("got here");
   const formValue = formObj.elements[0].value;
   let foundCourse = mainClasses[formValue];
@@ -47,7 +47,7 @@ function libraryView() {
   }
 }
 if (imgId.src == array[2]) {
-  alert("am");
+  // alert("am");
 }
 //viewing the previous post
 function prev() {
@@ -81,7 +81,7 @@ let dateArr = [
   "09",
   "10",
   "11",
-  "12"
+  "12",
 ];
 //renew of collection
 const renewBooks = () => {
@@ -98,9 +98,7 @@ const renewBooks = () => {
   let dateFormat = `${yr} ${month} ${date}`;
   let renewBook;
   let mapIssuedDate;
-  let result = String(dateFormat)
-    .split(" ")
-    .join("-");
+  let result = String(dateFormat).split(" ").join("-");
   let currentDate = result;
   console.log(currentDate);
   //if renew needs
@@ -114,11 +112,11 @@ const renewBooks = () => {
         );
         //checking if the renewer already have the library material
         let getUserNameMap = collection
-          .filter(renewerObject => renewerObject.Title === proForRenewBooks)
-          .map(renewerName => renewerName.Name);
+          .filter((renewerObject) => renewerObject.Title === proForRenewBooks)
+          .map((renewerName) => renewerName.Name);
         renewBook = collection
-          .filter(renewerObject => renewerObject.Title === proForRenewBooks)
-          .map(bookTitleToRenew => bookTitleToRenew.Title);
+          .filter((renewerObject) => renewerObject.Title === proForRenewBooks)
+          .map((bookTitleToRenew) => bookTitleToRenew.Title);
         //things ton happen if the user continues
         if (confirmInputValue === true) {
           if (
@@ -127,10 +125,12 @@ const renewBooks = () => {
           ) {
             //get the issued date from data
             mapIssuedDate = collection
-              .filter(renewerObject => renewerObject.Title == proForRenewBooks)
-              .map(dateString => dateString.Issue_date);
+              .filter(
+                (renewerObject) => renewerObject.Title == proForRenewBooks
+              )
+              .map((dateString) => dateString.Issue_date);
             //comparing dates to check if the renewer have already exceeded his book return date
-            let dateDifferent = mapIssuedDate.map(dateString =>
+            let dateDifferent = mapIssuedDate.map((dateString) =>
               dateString !== currentDate
                 ? new Date(currentDate).getDate() -
                   new Date(dateString).getDate()
@@ -142,8 +142,9 @@ const renewBooks = () => {
             if (dateDifferent - 7 > 0) {
               //message if the renewer has exceeded and the amount to be paid to the library
               alert(
-                `${userLoggedIn} you are oweing the library ${dateDifferent *
-                  100}`
+                `${userLoggedIn} you are oweing the library ${
+                  dateDifferent * 100
+                }`
               );
             } else {
               //if the renewer time ius still with in range of expected date
@@ -151,12 +152,12 @@ const renewBooks = () => {
               console.log(bookDuration);
               //filtering collection that matches the renewer search
               let ajustUserObject = collection.filter(
-                bookTitle => bookTitle.Title === proForRenewBooks
+                (bookTitle) => bookTitle.Title === proForRenewBooks
               );
               for (values of ajustUserObject) {
                 //get the index of the the found collection from the collectionData for update.
                 let userIndex = collection.findIndex(
-                  userProperty => userProperty == values
+                  (userProperty) => userProperty == values
                 );
                 values.Issue_date = currentDate;
                 console.log(userIndex);
@@ -197,7 +198,7 @@ const renewBooks = () => {
       //running check to see if it matches with the user logged in
       if (proForName === userLoggedIn) {
         //checking if the user name already exist in the discharge collection. if yes the person is not eligible
-        let borrowersName = collection.map(v => v["Name"]);
+        let borrowersName = collection.map((v) => v["Name"]);
         console.log(borrowersName);
         if (borrowersName.includes(proForName)) {
           alert(
@@ -242,7 +243,7 @@ const generateString = () => {
   shuffle = randomStr
     .toString()
     .split("")
-    .sort(n => 0.5 - Math.random(n))
+    .sort((n) => 0.5 - Math.random(n))
     .join("");
   let reserveBookKey = shuffle.slice(shuffle, 8);
   return reserveBookKey;
@@ -255,7 +256,7 @@ function reserveList() {
   shuffle = randomStr
     .toString()
     .split("")
-    .sort(n => 0.5 - Math.random(n))
+    .sort((n) => 0.5 - Math.random(n))
     .join("");
   let reserveBookKey = shuffle.slice(shuffle, 8);
   // console.log(reserveKey);
@@ -289,16 +290,16 @@ function reserveList() {
         );
         //getting object of the reserver collection the matches the reserver search
         let founBooksByTitle = handleStorageBooksByTitle.filter(
-          booksByTitle => booksByTitle.Title
+          (booksByTitle) => booksByTitle.Title
         );
         //getting the exact title from the object
-        let mapedTitledBook = founBooksByTitle.map(title => title.Title);
+        let mapedTitledBook = founBooksByTitle.map((title) => title.Title);
         // console.log(mapedTitledBook);
         if (mapedTitledBook.includes(proForTitle)) {
           console.log(mapedTitledBook);
           console.log(founBooksByTitle);
           let nameData = handleSignUpData.filter(
-            user =>
+            (user) =>
               `${user.fname + " " + user.lname}` ===
               JSON.parse(localStorage.getItem("loggerName"))
           );
@@ -306,7 +307,7 @@ function reserveList() {
           for (userObject of nameData) {
             //find object of the renewer
             userObjectIndex = handleSignUpData.findIndex(
-              userObjectIndex => userObjectIndex === userObject
+              (userObjectIndex) => userObjectIndex === userObject
             );
             console.log(userObjectIndex);
           }
@@ -346,7 +347,7 @@ function reserveList() {
         );
         let retrieveBooksByAuthor = handleBooksByAuthor.filter(
           //filtering books by the author
-          authors => authors.Author === proForAuthor
+          (authors) => authors.Author === proForAuthor
         );
         let rowsForHead = document.createElement("tr"); //crete rows
         let bookObjKeys, bookObjValues;
@@ -357,22 +358,22 @@ function reserveList() {
           let Title = values.Title; //got the book title
           Object.assign(objectForTitleAndAuthor, {
             Author,
-            Title
+            Title,
           });
           ArrayForAuthorAndTitle.push(objectForTitleAndAuthor); //pushing the object into an array
           console.log(ArrayForAuthorAndTitle);
         }
-        ArrayForAuthorAndTitle.map(key => {
+        ArrayForAuthorAndTitle.map((key) => {
           bookObjKeys = Object.keys(key); //getting keys of the object
         });
-        bookObjKeys.map(keys => {
+        bookObjKeys.map((keys) => {
           let tableHeading = document.createElement("th"); //create tableheading
           tableHeading.innerText = keys; //assigning keys to table headings
           rowsForHead.appendChild(tableHeading);
         });
         handleThead.appendChild(rowsForHead);
         handleTable.appendChild(handleThead);
-        ArrayForAuthorAndTitle.map(bookProperties => {
+        ArrayForAuthorAndTitle.map((bookProperties) => {
           let rowsForBody = document.createElement("tr"); //create rows
           rowsForBody.setAttribute("display", "flex"); //set styles
           rowsForBody.setAttribute("justify-content", "space-between");
@@ -414,14 +415,14 @@ function subscribeBook() {
   //call back function on the titles
   const handleSignUpData = JSON.parse(localStorage.getItem("signup"));
   let nameData = handleSignUpData.filter(
-    user =>
+    (user) =>
       `${user.fname + " " + user.lname}` ===
       JSON.parse(localStorage.getItem("loggerName"))
   );
   let userObjectIndex;
   for (userObject of nameData) {
     userObjectIndex = handleSignUpData.findIndex(
-      userObjectIndex => userObjectIndex === userObject
+      (userObjectIndex) => userObjectIndex === userObject
     );
     console.log(userObjectIndex);
   }
@@ -506,7 +507,7 @@ function librayServices(e) {
             );
             // getting the reservers name
             let reserverName = systemReservers.map(
-              reservers => reservers.proForName
+              (reservers) => reservers.proForName
             );
             // check if the reserver had reserved the system
             if (reserverName.includes(proForName)) {
@@ -523,7 +524,7 @@ function librayServices(e) {
               if (localStorage.getItem("systemReservers") === null) {
                 arrayForSystemReserver.push({
                   proForName,
-                  timeValue
+                  timeValue,
                 });
 
                 // console.log(reserverData);

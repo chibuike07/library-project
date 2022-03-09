@@ -17,7 +17,7 @@
         let memb = JSON.parse(localStorage.getItem("signup"));
         console.log(memb);
         ulElem = document.getElementById("ul");
-        memb.map(n => {
+        memb.map((n) => {
           let memArr = `${n.fname} ${n.lname}`;
           let liElem = document.createElement("li");
           liElem.innerText = memArr;

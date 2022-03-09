@@ -21,11 +21,11 @@ if (hh > 11) hi = "Good Afernoon";
 
 if (hh > 17) hi = "Good Evening";
 //displaying the welcome note withthe present time nd month
-let tim = hi + "\n";
-tim += "Hours:" + hh + "\n";
-tim += " Minutes:" + mn + "\n";
-tim += "seconds:" + sec + "\n";
-alert(tim);
+let time = hi + "\n";
+time += "Hours:" + hh + "\n";
+time += " Minutes:" + mn + "\n";
+time += "seconds:" + sec + "\n";
+// alert(time);
 const addTableRow = () => {
   //geting the input.values
   let Author = document.forms.Book.Author.value,
@@ -38,34 +38,34 @@ const addTableRow = () => {
     Edition = document.forms.Book.Edition.value;
 
   //validation of form
-  if (Author == "") {
+  if (Author === "") {
     alert("please fill in Author box");
     document.getElementById("Author").focus();
     return false;
-  } else if (Title == "") {
+  } else if (Title === "") {
     alert("please fill in Title box");
     document.getElementById("Title").focus();
     return false;
-  } else if (Isbn == "") {
+  } else if (Isbn === "") {
     alert("please fill in Isbn box");
     document.getElementById("Isbn").focus();
     return false;
-  } else if (Year_of_Publication == "") {
+  } else if (Year_of_Publication === "") {
     alert("please fill in Year_of_Publication box");
     document.getElementById("Year_of_Publication").focus();
     return false;
-  } else if (Place_of_Publication == "") {
+  } else if (Place_of_Publication === "") {
     alert("please fill in Place_of_Publication box");
     document.getElementById("Year_of_Publication").fucos();
     return false;
-  } else if (Number_of_Title == "") {
+  } else if (Number_of_Title === "") {
     alert("please fill in Number_of_Title box");
     document.getElementById("Number_of_Title").focus();
     return false;
-  } else if (Class_Number == "") {
+  } else if (Class_Number === "") {
     alert("please fill in Class_Number box");
     document.getElementById("Class_Number").focus();
-  } else if (Edition == "") {
+  } else if (Edition === "") {
     alert("please fill in Edition box");
     document.getElementById("Edition").focus();
     return false;
@@ -97,7 +97,7 @@ const addTableRow = () => {
     Place_of_Publication,
     Number_of_Title,
     Class_Number,
-    Edition
+    Edition,
   };
   //   arrForBook.push(input);
   console.log(arrForBook);
@@ -113,7 +113,7 @@ const selectionRowToInput = () => {
       "Number Of Collections is :" + Object.keys(strorageData).length;
     +" " + Object.keys(strorageData).length;
     console.log(table.rows.length);
-    table.rows[i].onclick = function() {
+    table.rows[i].onclick = function () {
       rIndex = this.rowIndex;
       console.log(rIndex);
       document.forms.Book.Author.value = this.cells[0].innerHTML;
@@ -158,7 +158,7 @@ const editTableRow = () => {
     Place_of_Publication: Place_of_Publication,
     Number_of_Title: Number_of_Title,
     Class_Number: Class_Number,
-    Edition: Edition
+    Edition: Edition,
   });
   localStorage.setItem("bookCollection", JSON.stringify(strorageData));
   document.querySelector("form").reset();

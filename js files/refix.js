@@ -4,13 +4,13 @@ let onl = document.getElementById("onl");
 let navImg = document.getElementById("img");
 
 // let LinkMemb = document.getElementById('memb');
-$("#memb").click(function() {
+$("#memb").click(function () {
   alert("clicked");
   $(".all-cont").load("mem.html");
 });
 
-$("#ren").click(function() {
-  alert("am ren");
+$("#ren").click(function () {
+  // alert("am ren");
   window.location.replace("library.html?=" + "#auth");
   // console.log();
 });
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // clearInterval(interv);
   }
   $(".sta").click(() => {
-    alert("click");
+    // alert("click");
     let storageD = JSON.parse(localStorage.getItem("signup"));
     function memCo() {
       let memLen = `Total number of members is ${storageD.length}`;
@@ -39,13 +39,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     memCo();
     function studCo() {
-      let studLen = storageD.filter(n => n.dsp === "student");
+      let studLen = storageD.filter((n) => n.dsp === "student");
       console.log("number of student is " + studLen.length);
     }
     studCo();
     let notSchMem = () => {
       let nSchMem = storageD.filter(
-        n => n.dsp !== "student" && n.dsp !== "staff"
+        (n) => n.dsp !== "student" && n.dsp !== "staff"
       );
       console.log("Number of users are " + nSchMem.length);
     };
@@ -59,13 +59,13 @@ document.addEventListener("DOMContentLoaded", () => {
     cou();
   });
   $(".hel").click(() => {
-    alert("click");
+    // alert("click");
     // let hel = document.querySelector(".hel a");
     let inp = document.createElement("input");
     inp.setAttribute("list", "help");
     let dataList = document.createElement("datalist");
     dataList.setAttribute("id", "help");
-    option.map(values => {
+    option.map((values) => {
       let options = document.createElement("option");
       options.value = values;
       dataList.appendChild(options);
@@ -74,8 +74,8 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(inp);
     let a = document.createElement("a");
   });
-  $("#rc").click(function() {
-    alert("yes");
+  $("#rc").click(function () {
+    // alert("yes");
     $(".all-cont").load("christopher.html");
     // location.replace("unichris library.html");
   });
@@ -97,19 +97,19 @@ let sca = document.getElementById("sca");
 let res = document.getElementById("res");
 let wi_fi = document.getElementById("wi-fi");
 
-int.onmouseover = function() {
+int.onmouseover = function () {
   servImg.src = keyArray[0];
 };
-pri.onmouseover = function() {
+pri.onmouseover = function () {
   servImg.src = keyArray[1];
 };
-sca.onmouseover = function() {
+sca.onmouseover = function () {
   servImg.src = keyArray[2];
 };
-res.onmouseover = function() {
+res.onmouseover = function () {
   servImg.src = keyArray[3];
 };
-wi_fi.onmouseover = function() {
+wi_fi.onmouseover = function () {
   servImg.src = keyArray[4];
 };
 let iterableSet;

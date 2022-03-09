@@ -22,7 +22,7 @@ function add() {
     Return_day: document.forms.f.return_day.value.toLowerCase(),
     Total_days: document.forms.f.total_days.value.toLowerCase(),
     Added_days: document.forms.f.added_days.value.toLowerCase(),
-    Fine: document.forms.f.fine.value.toLowerCase()
+    Fine: document.forms.f.fine.value.toLowerCase(),
   };
   if (userData.Name == "") {
     document.getElementById("N").focus();
@@ -135,7 +135,7 @@ function load() {
 //defining the addEventListener onclick
 function activateItem() {
   for (let i = 1; i < table.rows.length; i++) {
-    table.rows[i].onclick = function() {
+    table.rows[i].onclick = function () {
       List = this.rowIndex;
       console.warn(List);
       document.forms.f.name.value = this.cells[0].innerHTML;
@@ -206,7 +206,7 @@ function editTable() {
     Return_day: Return_day,
     Total_days: Total_days,
     Added_days: Added_days,
-    Fine: Fine
+    Fine: Fine,
   });
 
   // localStorage.setItem("collection", JSON.stringify(arr));

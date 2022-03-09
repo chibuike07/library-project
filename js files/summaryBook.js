@@ -13,12 +13,12 @@ function countWord() {
   p.innerText = `${input.value}`;
   spanWod.innerText = `word count => ${holdWodCount.length}`;
   spanLet.innerText = ` character count => ${holdLetCount.length}`;
-  input.onkeyup = e => {
+  input.onkeyup = (e) => {
     if (e.keyCode == 13) {
       e.preventDefault();
     }
   };
-  input.onkeypress = e => {
+  input.onkeypress = (e) => {
     if (holdWodCount.length % 10 == 0) {
       if (e.keyCode == 32) {
         e.preventDefault();
@@ -36,7 +36,7 @@ function countWord() {
     // input.value = `${a}\n`
     // input.value.splice()
   };
-  input.onkeypress = e => {
+  input.onkeypress = (e) => {
     if (
       input.value.trim().split(/\s+/g).length % specifiedCount.innerText ==
       0
@@ -50,7 +50,7 @@ function countWord() {
   };
 }
 let specifiedCou = document.getElementById("specified");
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   spanWod.innerText = "word count =>";
   spanLet.innerText = "character count =>";
   specifiedCou.innerText = 5;
@@ -145,9 +145,9 @@ let saveText = document.getElementById("st");
 // let texArray = [];
 saveText.onclick = () => {
   let texObj = {
-    text: textarea.value
+    text: textarea.value,
   };
-  alert("yes");
+  // alert("yes");
   texArray.push(texObj);
   console.log(texObj);
   console.log(texArray);
